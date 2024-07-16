@@ -37,3 +37,5 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 ## 🚨 정기회의 🚨
 - 화요일 12시
 - 목요일 19시
+## 📅 팀 일정 📅
+<img width="639" alt="스크린샷 2024-07-16 오후 4 20 28" src="https://github.com/user-attachments/assets/40b21e0e-0b0a-4358-963d-7e04cbb0412d">
