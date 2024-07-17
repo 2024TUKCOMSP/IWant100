@@ -1,5 +1,6 @@
 package IWant100.IWant100_BE.vote.controller;
 
+import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteDeleteDTO;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteSaveDTO;
 import IWant100.IWant100_BE.vote.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class VoteController {
         // 투표 생성 service
         UUID voteId = voteService.exec(requestVoteSaveDTO);
 
-        // 주간부스 등록 성공 여부
+        // 투표 성공 여부
         boolean success = voteId != null;
 
         //Map을 통해 메시지와 id 값 json 데이터로 변환
@@ -37,6 +38,22 @@ public class VoteController {
         requestMap.put("success", success);
         requestMap.put("message", success ? "투표 생성 성공" : "투표 생성 시 DAO 저장 실패");
         requestMap.put("voteId", voteId);
+
+        //status, body 설정해서 응답 리턴
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
+    }
+
+    // 투표 삭제
+    @DeleteMapping
+    public ResponseEntity<Map<String, Object>> deleteVote(@RequestBody RequestVoteDeleteDTO requestVoteDeleteDTO) {
+
+        // 투표 삭제 service 성공 여부
+        boolean success = voteService.exec(requestVoteDeleteDTO);
+
+        //Map을 통해 메시지와 id 값 json 데이터로 변환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("success", success);
+        requestMap.put("message", success ? "투표 삭제 성공" : "투표 삭제 시 DAO 검색 실패");
 
         //status, body 설정해서 응답 리턴
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
