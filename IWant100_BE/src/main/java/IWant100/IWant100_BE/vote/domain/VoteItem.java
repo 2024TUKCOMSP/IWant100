@@ -2,10 +2,7 @@ package IWant100.IWant100_BE.vote.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -14,9 +11,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class VoteItem {
     @Id
     UUID voteItemId;
+    UUID voteId;
     String voteItemContent;
     Integer voteItemCount;
 }
