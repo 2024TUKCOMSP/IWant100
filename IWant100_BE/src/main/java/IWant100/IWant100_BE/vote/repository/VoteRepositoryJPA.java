@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface VoteRepositoryJPA extends JpaRepository<Vote, UUID> {
+    Vote findByVoteIdAndUserId(UUID voteId, UUID userId);
 }
