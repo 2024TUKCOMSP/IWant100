@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import './css/esamanru.css';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import LoginPage from './components/login/LoginPage';
 import MainPage from './components/main/MainPage';
