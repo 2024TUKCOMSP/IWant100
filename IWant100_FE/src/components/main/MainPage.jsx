@@ -1,10 +1,23 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import profileIcon from '../../assets/profile_icon.svg';
 import createIcon from '../../assets/create_icon.svg';
 import voteIcon from '../../assets/vote_icon.svg';
 import tinoIcon from '../../assets/tino.svg';
 
 function MainPage() {
+  const navigate = useNavigate();
+
+  const handleCreateVote = () => {
+    navigate('/create');
+  };
+  const handleVoteList = () => {
+    navigate('/list');
+  };
+  const handleUser = () => {
+    navigate('/user');
+  };
+
   return (
     <div className="text-center h-screen bg-gray-100">
       <header className="bg-blue-500 p-5 text-white relative h-1/3 flex items-start justify-between rounded-b-[50%_20%]">
@@ -13,7 +26,7 @@ function MainPage() {
           <h2 className="text-2xl mb-2 font-bold">IWANT100</h2>
         </div>
         <div className="absolute top-6 right-6">
-          <img src={profileIcon} alt="Profile" className="w-6 h-6" />
+          <img src={profileIcon} alt="Profile" className="w-6 h-6" onClick={handleUser}/>
         </div>
         <img src={tinoIcon} alt="Tino" className="absolute right-[5%] bottom-[10%] w-1/2 h-auto" />
       </header>
@@ -33,11 +46,16 @@ function MainPage() {
           </div>
         </div>
         <section className="flex flex-col gap-8">
-          <button className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md">
+          <button 
+            className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md"
+            onClick={handleCreateVote}
+          >
             <img src={createIcon} alt="Create Icon" className="w-9 h-12 ml-3" />
             <span>투표 생성</span>
           </button>
-          <button className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md">
+          <button className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md"
+            onClick={handleVoteList}
+          >
             <img src={voteIcon} alt="Vote Icon" className="w-9 h-12 ml-3" />
             <span>투표 목록</span>
           </button>
