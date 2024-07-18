@@ -1,23 +1,28 @@
 package IWant100.IWant100_BE.vote.service;
 
 import IWant100.IWant100_BE.vote.bean.DeleteVoteBean;
+import IWant100.IWant100_BE.vote.bean.GetVotesBean;
 import IWant100.IWant100_BE.vote.bean.SaveVoteBean;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteDeleteDTO;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteSaveDTO;
+import IWant100.IWant100_BE.vote.domain.DTO.ResponseVoteGetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class VoteService {
     SaveVoteBean saveVoteBean;
     DeleteVoteBean deleteVoteBean;
+    GetVotesBean getVotesBean;
 
     @Autowired
-    public VoteService(SaveVoteBean saveVoteBean, DeleteVoteBean deleteVoteBean) {
+    public VoteService(SaveVoteBean saveVoteBean, DeleteVoteBean deleteVoteBean, GetVotesBean getVotesBean) {
         this.saveVoteBean = saveVoteBean;
         this.deleteVoteBean = deleteVoteBean;
+        this.getVotesBean = getVotesBean;
     }
 
     // 투표 생성
@@ -28,5 +33,10 @@ public class VoteService {
     // 투표 삭제
     public Boolean exec(RequestVoteDeleteDTO requestVoteDeleteDTO) {
         return deleteVoteBean.exec(requestVoteDeleteDTO);
+    }
+
+    // 투표 전체 조회
+    public List<ResponseVoteGetDTO> getVoteAll() {
+        return getVotesBean.exec();
     }
 }
