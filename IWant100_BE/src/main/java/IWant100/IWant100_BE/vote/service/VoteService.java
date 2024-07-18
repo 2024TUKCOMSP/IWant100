@@ -1,6 +1,7 @@
 package IWant100.IWant100_BE.vote.service;
 
 import IWant100.IWant100_BE.vote.bean.DeleteVoteBean;
+import IWant100.IWant100_BE.vote.bean.GetVoteBean;
 import IWant100.IWant100_BE.vote.bean.GetVotesBean;
 import IWant100.IWant100_BE.vote.bean.SaveVoteBean;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteDeleteDTO;
@@ -17,12 +18,14 @@ public class VoteService {
     SaveVoteBean saveVoteBean;
     DeleteVoteBean deleteVoteBean;
     GetVotesBean getVotesBean;
+    GetVoteBean getVoteBean;
 
     @Autowired
-    public VoteService(SaveVoteBean saveVoteBean, DeleteVoteBean deleteVoteBean, GetVotesBean getVotesBean) {
+    public VoteService(SaveVoteBean saveVoteBean, DeleteVoteBean deleteVoteBean, GetVotesBean getVotesBean, GetVoteBean getVoteBean) {
         this.saveVoteBean = saveVoteBean;
         this.deleteVoteBean = deleteVoteBean;
         this.getVotesBean = getVotesBean;
+        this.getVoteBean = getVoteBean;
     }
 
     // 투표 생성
@@ -38,5 +41,10 @@ public class VoteService {
     // 투표 전체 조회
     public List<ResponseVoteGetDTO> getVoteAll() {
         return getVotesBean.exec();
+    }
+
+    // 메인화면 인기투표 조회
+    public ResponseVoteGetDTO getVote() {
+        return getVoteBean.exec();
     }
 }
