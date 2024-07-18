@@ -25,6 +25,26 @@ public class VoteController {
         this.voteService = voteService;
     }
 
+    // 메인화면 인기투표 조회
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> getVote() {
+
+        // 투표 조회 service
+        ResponseVoteGetDTO responseVoteGetDTO = voteService.getVote();
+
+        // 투표 조회 여부
+        boolean success = responseVoteGetDTO != null;
+
+        //Map을 통해 메시지와 info 값 json 데이터로 변환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("success", success);
+        requestMap.put("message", success ? "투표 조회 성공" : "투표 조회 시 DAO 검색 실패");
+        requestMap.put("voteInfo", responseVoteGetDTO);
+
+        //status, body 설정해서 응답 리턴
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
+    }
+
     // 투표 전체조회
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getVoteAll() {
