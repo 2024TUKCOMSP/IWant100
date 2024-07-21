@@ -2,6 +2,7 @@ package IWant100.IWant100_BE.vote.controller;
 
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteDeleteDTO;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteSaveDTO;
+import IWant100.IWant100_BE.vote.domain.DTO.ResponseVoteGetDTO;
 import IWant100.IWant100_BE.vote.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,6 +23,46 @@ public class VoteController {
     @Autowired
     public VoteController(VoteService voteService) {
         this.voteService = voteService;
+    }
+
+    // 메인화면 인기투표 조회
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> getVote() {
+
+        // 투표 조회 service
+        ResponseVoteGetDTO responseVoteGetDTO = voteService.getVote();
+
+        // 투표 조회 여부
+        boolean success = responseVoteGetDTO != null;
+
+        //Map을 통해 메시지와 info 값 json 데이터로 변환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("success", success);
+        requestMap.put("message", success ? "투표 조회 성공" : "투표 조회 시 DAO 검색 실패");
+        requestMap.put("voteInfo", responseVoteGetDTO);
+
+        //status, body 설정해서 응답 리턴
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
+    }
+
+    // 투표 전체조회
+    @GetMapping("/all")
+    public ResponseEntity<Map<String, Object>> getVoteAll() {
+
+        // 투표 전체조회 service
+        List<ResponseVoteGetDTO> responseVoteGetDTOList = voteService.getVoteAll();
+
+        // 투표 전체조회 여부
+        boolean success = responseVoteGetDTOList != null;
+
+        //Map을 통해 메시지와 List 값 json 데이터로 변환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("success", success);
+        requestMap.put("message", success ? "투표 조회 성공" : "투표 조회 시 DAO 검색 실패");
+        requestMap.put("voteList", responseVoteGetDTOList);
+
+        //status, body 설정해서 응답 리턴
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
     }
 
     // 투표 생성
@@ -53,7 +95,7 @@ public class VoteController {
         //Map을 통해 메시지와 id 값 json 데이터로 변환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("success", success);
-        requestMap.put("message", success ? "투표 삭제 성공" : "투표 삭제 시 DAO 검색 실패");
+        requestMap.put("message", success ? "투표 삭제 성공" : "투표 삭제 실패");
 
         //status, body 설정해서 응답 리턴
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);

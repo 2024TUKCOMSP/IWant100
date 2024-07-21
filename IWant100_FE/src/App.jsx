@@ -5,6 +5,9 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import LoginPage from './components/login/LoginPage';
 import MainPage from './components/main/MainPage';
 import CreateVotePage from './components/create/CreateVotePage';
+import VoteListPage from './components/list/VoteListPage';
+import UserPage from './components/user/UserPage';
+import ResultPage from './components/result/ResultPage';
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
             <Route path='/login' element={<LoginPage />}></Route>
             <Route path='/' element={<MainPage />}></Route>
             <Route path='/create' element={<CreateVotePage />}></Route>
+            <Route path='/list' element={<VoteListPage />}></Route>
+            <Route path='/user' element={<UserPage />}></Route>
+            <Route path='/result' element={<ResultPage />}></Route>
           </Routes>
         </div>
         <div className='h-full'></div>
