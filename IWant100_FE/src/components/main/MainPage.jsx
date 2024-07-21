@@ -47,16 +47,16 @@ function MainPage() {
         </div>
         <section className="flex flex-col gap-8">
           <button 
-            className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md"
+            className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md group"
             onClick={handleCreateVote}
           >
-            <img src={createIcon} alt="Create Icon" className="w-9 h-12 ml-3" />
+            <img src={createIcon} alt="Create Icon" className="w-9 h-12 ml-3 group-hover:filter group-hover:brightness-200" />
             <span>투표 생성</span>
           </button>
-          <button className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md"
+          <button className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md group"
             onClick={handleVoteList}
           >
-            <img src={voteIcon} alt="Vote Icon" className="w-9 h-12 ml-3" />
+            <img src={voteIcon} alt="Vote Icon" className="w-9 h-12 ml-3 group-hover:filter group-hover:brightness-200" />
             <span>투표 목록</span>
           </button>
         </section>
