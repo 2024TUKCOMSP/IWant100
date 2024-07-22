@@ -28,10 +28,12 @@ module.exports = {
         'google-icon': "url('/icons/Google-removebg-preview.svg')",
         'login-lock-icon': "url('/icons/login-lock.svg')",
         'select-option-icon': "url('/icons/select-option.svg')",
-        'submit-icon': "url('/icons/submit.svg')"
+        'submit-icon': "url('/icons/submit.svg')",
+        'login-header': "url('/images/login-header.svg')"
       },
       boxShadow: {
         'default': '0 4px 4px rgba(0, 0, 0, 0.25)',
+        'login-button': 'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
       },
     },
   },
