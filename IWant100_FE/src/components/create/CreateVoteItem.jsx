@@ -1,6 +1,6 @@
 import React from "react";
 
-function VoteItem(props) {
+function CreateVoteItem(props) {
   return (
     <div>
       <div className="w-full p-4 mb-5 bg-white rounded-lg flex justify-between items-center shadow-default">
@@ -13,4 +13,4 @@ function VoteItem(props) {
   )
 }
 
-export default VoteItem;
+export default CreateVoteItem;

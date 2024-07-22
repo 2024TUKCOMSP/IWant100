@@ -8,6 +8,7 @@ import CreateVotePage from './components/create/CreateVotePage';
 import VoteListPage from './components/list/VoteListPage';
 import UserPage from './components/user/UserPage';
 import ResultPage from './components/result/ResultPage';
+import VotePage from './components/vote/VotePage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/list' element={<VoteListPage />}></Route>
             <Route path='/user' element={<UserPage />}></Route>
             <Route path='/result' element={<ResultPage />}></Route>
+            <Route path='/vote/:id' element={<VotePage />}></Route>
           </Routes>
         </div>
         <div className='h-full'></div>
