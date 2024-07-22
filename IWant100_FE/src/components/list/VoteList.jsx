@@ -14,7 +14,7 @@ function VoteList() {
   const navigate = useNavigate();
 
   const handleBoxClick = () => {
-    navigate(`/result`);
+    navigate(`/vote/1`);
   };
 
   return (
