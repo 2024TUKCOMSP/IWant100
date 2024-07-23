@@ -65,6 +65,26 @@ public class VoteController {
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
     }
 
+    // 내가 만든 투표 전체조회
+    @GetMapping("/all/user/{userId}")
+    public ResponseEntity<Map<String, Object>> getMyVoteAll(@PathVariable("userId") UUID userId) {
+
+        // 투표 전체조회 service
+        List<ResponseVoteGetDTO> responseVoteGetDTOList = voteService.getMyVoteAll(userId);
+
+        // 투표 전체조회 여부
+        boolean success = responseVoteGetDTOList != null;
+
+        //Map을 통해 메시지와 List 값 json 데이터로 변환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("success", success);
+        requestMap.put("message", success ? "내가 만든 투표 전체 조회 성공" : "내가 만든 투표 전체 조회 시 DAO 검색 실패");
+        requestMap.put("voteList", responseVoteGetDTOList);
+
+        //status, body 설정해서 응답 리턴
+        return ResponseEntity.status(HttpStatus.OK).body(requestMap);
+    }
+
     // 투표 생성
     @PostMapping
     public ResponseEntity<Map<String, Object>> saveVote(@RequestBody RequestVoteSaveDTO requestVoteSaveDTO) {
