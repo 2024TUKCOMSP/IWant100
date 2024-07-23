@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class GetVotesDAOBean {
@@ -19,5 +20,10 @@ public class GetVotesDAOBean {
     // 투표 전체 DAO 찾기
     public List<Vote> exec() {
         return voteRepositoryJPA.findAllByOrderByEndAtAsc();
+    }
+
+    // userId를 통해 투표 전체 오래된 순으로 찾기
+    public List<Vote> exec(UUID userId) {
+        return voteRepositoryJPA.findAllByUserIdOrderByEndAtAsc(userId);
     }
 }
