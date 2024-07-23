@@ -41,8 +41,12 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 ## 🏷 Label 🏷️
 <img width="639" alt="스크린샷 2024-07-23 오후 7 34 36" src="https://github.com/user-attachments/assets/55058f8f-89ea-4127-b36c-baf2401f822e">
 
+## 👩🏻‍💻 Figma Design 👩🏻‍💻
+<img width="639" alt="스크린샷 2024-07-23 오후 7 41 22" src="https://github.com/user-attachments/assets/e7c50f07-70fa-41b4-aa42-0a3ec4ccea19">
+
+
 ## 📱퍼블리싱📱
-Login |Home Page|
+Login Page |Home Page|
 -------------|---------|
 <img width="300" alt="Login" src="https://github.com/user-attachments/assets/08228fd3-11f0-4bb4-8bc6-311b94c4b103">|<img width="300" alt="home" src="https://github.com/user-attachments/assets/7b413664-25ec-4243-aee4-a39f9b804959">|
 
@@ -51,9 +55,14 @@ User Page|Vote Create page|
 --------------------|-----------------|
 <img width="300" alt="User" src="https://github.com/user-attachments/assets/f86f9419-7a09-4ae1-ab85-426254f8332e">|<img src="https://github.com/user-attachments/assets/8c9b61db-70a7-4c86-96eb-e8893cf679a6" width="300">|
 
-Vote List Page|Vote Result Page|
+Vote List Page|Vote Page|
 -------------------|------------------------|
-<img width="300" alt="chart" src="https://github.com/user-attachments/assets/e421198b-3472-4fe0-b742-92f71acd9fb6">|<img width="300" alt="Feed Recommendation" src="https://github.com/user-attachments/assets/98661a53-a8c9-4b6b-9aef-528dea437a23">|
+<img width="300" alt="List" src="https://github.com/user-attachments/assets/9f881710-a4a3-462e-80af-c88619b8421f">|<img width="300" alt="Vote" src="https://github.com/user-attachments/assets/98661a53-a8c9-4b6b-9aef-528dea437a23">|
+
+Vote Result Page|
+-------------------|
+<img width="300" alt="chart" src="https://github.com/user-attachments/assets/e421198b-3472-4fe0-b742-92f71acd9fb6">|
+
 
 
 ## 📅 팀 일정 📅
