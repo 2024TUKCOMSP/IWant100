@@ -58,7 +58,7 @@ public class VoteController {
         //Map을 통해 메시지와 List 값 json 데이터로 변환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("success", success);
-        requestMap.put("message", success ? "투표 조회 성공" : "투표 조회 시 DAO 검색 실패");
+        requestMap.put("message", success ? "투표 전체 조회 성공" : "투표 전체 조회 시 DAO 검색 실패");
         requestMap.put("voteList", responseVoteGetDTOList);
 
         //status, body 설정해서 응답 리턴
