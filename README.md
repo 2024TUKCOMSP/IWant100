@@ -52,17 +52,14 @@ Login Page |Home Page|
 User Page|Vote Create page|
 --------------------|-----------------|
 <img width="300" alt="스크린샷 2024-07-23 오후 7 12 27" src="https://github.com/user-attachments/assets/40da68bd-dd39-4eb5-a448-50e3891543e4">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 36" src="https://github.com/user-attachments/assets/192c91c8-a867-4553-b94c-e4d0310d9755">
-|
 
-Vote List Page|Vote Result Page|
+Vote Page|Vote Result Page|
 -------------------|------------------------|
-<img width="300" src="https://github.com/user-attachments/assets/9f881710-a4a3-462e-80af-c88619b8421f">|<img width="300" src="https://github.com/user-attachments/assets/98661a53-a8c9-4b6b-9aef-528dea437a23">|
+<img width="300" src="https://github.com/user-attachments/assets/9f881710-a4a3-462e-80af-c88619b8421f">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 47" src="https://github.com/user-attachments/assets/7cf366ec-2ed2-47bc-b1f7-e500615bf5d2">|
 
 Vote List Page|
 -------------------|
-<img width="300" src="https://github.com/user-attachments/assets/e421198b-3472-4fe0-b742-92f71acd9fb6">|
-
-
+<img width="300" alt="스크린샷 2024-07-23 오후 7 12 43" src="https://github.com/user-attachments/assets/209b178e-889f-46f9-8a81-0a853c3eb961">|
 
 ## 📅 팀 일정 📅
 <img width="639" alt="스크린샷 2024-07-16 오후 4 20 28" src="https://github.com/user-attachments/assets/40b21e0e-0b0a-4358-963d-7e04cbb0412d">
