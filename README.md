@@ -55,11 +55,11 @@ User Page|Vote Create page|
 --------------------|-----------------|
 <img width="300" alt="User" src="https://github.com/user-attachments/assets/f86f9419-7a09-4ae1-ab85-426254f8332e">|<img src="https://github.com/user-attachments/assets/8c9b61db-70a7-4c86-96eb-e8893cf679a6" width="300">|
 
-Vote List Page|Vote Page|
+Vote List Page|Vote Result Page|
 -------------------|------------------------|
 <img width="300" alt="List" src="https://github.com/user-attachments/assets/9f881710-a4a3-462e-80af-c88619b8421f">|<img width="300" alt="Vote" src="https://github.com/user-attachments/assets/98661a53-a8c9-4b6b-9aef-528dea437a23">|
 
-Vote Result Page|
+Vote List Page|
 -------------------|
 <img width="300" alt="chart" src="https://github.com/user-attachments/assets/e421198b-3472-4fe0-b742-92f71acd9fb6">|
 
