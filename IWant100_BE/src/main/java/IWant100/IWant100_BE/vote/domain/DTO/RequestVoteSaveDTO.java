@@ -11,7 +11,6 @@ public class RequestVoteSaveDTO {
     UUID userId;
     String voteIntro;
     Boolean isDuplication;
-    Boolean isAnonymous;
     LocalDateTime endAt;
     List<String> VoteItemList;
 }

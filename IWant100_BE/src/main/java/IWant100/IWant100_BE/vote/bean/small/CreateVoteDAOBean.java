@@ -15,7 +15,6 @@ public class CreateVoteDAOBean {
                 .voteId(UUID.randomUUID())
                 .userId(requestVoteSaveDTO.getUserId())
                 .voteIntro(requestVoteSaveDTO.getVoteIntro())
-                .isAnonymous(requestVoteSaveDTO.getIsAnonymous())
                 .isDuplication(requestVoteSaveDTO.getIsDuplication())
                 .createAt(LocalDateTime.now())
                 .endAt(requestVoteSaveDTO.getEndAt())
