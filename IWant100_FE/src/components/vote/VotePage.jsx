@@ -38,7 +38,7 @@ function VotePage() {
           </div>
           <div 
             onClick={handleBoxClick}
-            className="w-full font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer">
+            className="w-full mb-5 font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer">
             투표 확인
           </div>
         </div>
