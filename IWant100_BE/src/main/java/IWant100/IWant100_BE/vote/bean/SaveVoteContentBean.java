@@ -36,7 +36,7 @@ public class SaveVoteContentBean {
         Voter voter = createVoteContentDAOBean.exec(requestVoteContentSaveDTO);
         if(voter == null) return  null;
 
-        Vote vote = getVoteDAOBean.exec(requestVoteContentSaveDTO.getVoteId(), requestVoteContentSaveDTO.getUserId());
+        Vote vote = getVoteDAOBean.exec(requestVoteContentSaveDTO.getVoteId());
         if(vote == null) return null;
 
         List<VoteItem> voteItemList = getVoteItemsDAOBean.exec(requestVoteContentSaveDTO.getVoteId());
