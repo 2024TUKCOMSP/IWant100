@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './components/login/LoginPage';
 import MainPage from './components/main/MainPage';
 import CreateVotePage from './components/create/CreateVotePage';
@@ -9,11 +9,11 @@ import VotePage from './components/vote/VotePage';
 
 function App() {
   return (
-    <Router>
-      <div className="w-full min-h-screen flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_430px_1fr] lg:grid-cols-[1fr_600px_1fr] w-full max-w-full">
-          <div className="hidden lg:block"></div>
-          <div className="shadow-xl min-h-screen h-full">
+    <BrowserRouter>
+      <div className="w-full min-h-screen grid grid-cols-1">
+        <div className="bg-white"></div>
+        <div className="min-h-screen h-full flex justify-center items-center">
+          <div className="shadow-2xl min-h-screen h-full w-full h-full w-full min-w-[405px] max-w-[500px]">
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<MainPage />} />
@@ -24,10 +24,10 @@ function App() {
               <Route path="/vote/:id" element={<VotePage />} />
             </Routes>
           </div>
-          <div className="hidden lg:block"></div>
         </div>
+        <div className="bg-white"></div>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
