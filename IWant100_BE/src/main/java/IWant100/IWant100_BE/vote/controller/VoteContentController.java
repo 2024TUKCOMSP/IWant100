@@ -28,16 +28,16 @@ public class VoteContentController {
     public ResponseEntity<Map<String, Object>> saveVoteContent(@RequestBody RequestVoteContentSaveDTO requestVoteContentSaveDTO) {
 
         // 투표하기 service
-        UUID userId = voteContentService.saveVoteContent(requestVoteContentSaveDTO);
+        UUID voterId = voteContentService.saveVoteContent(requestVoteContentSaveDTO);
 
         // 투표하기 여부
-        boolean success = userId != null;
+        boolean success = voterId != null;
 
         //Map을 통해 메시지와 id 값 json 데이터로 변환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("success", success);
         requestMap.put("message", success ? "투표하기 성공" : "투표하기 시 DAO 저장 실패");
-        requestMap.put("userId", userId);
+        requestMap.put("voterId", voterId);
 
         //status, body 설정해서 응답 리턴
         return ResponseEntity.status(HttpStatus.OK).body(requestMap);
