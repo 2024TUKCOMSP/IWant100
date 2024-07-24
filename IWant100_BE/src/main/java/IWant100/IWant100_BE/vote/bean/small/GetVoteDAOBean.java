@@ -20,4 +20,9 @@ public class GetVoteDAOBean {
     public Vote exec(UUID voteId, UUID userId) {
         return voteRepositoryJPA.findByVoteIdAndUserId(voteId, userId);
     }
+
+    // voteId를 통해 원하는 객체 찾기
+    public Vote exec(UUID voteId) {
+        return voteRepositoryJPA.findById(voteId).orElse(null);
+    }
 }
