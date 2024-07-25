@@ -13,11 +13,10 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  font-family: 'Pretendard Variable';
   min-width: 375px;
   max-width: 500px;
-  height: auto;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100lvh;
   overflow-x: hidden;
   -ms-overflow-style: none;
 }

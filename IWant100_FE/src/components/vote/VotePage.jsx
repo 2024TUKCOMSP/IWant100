@@ -12,13 +12,15 @@ function VotePage() {
   };
 
   return (
-    <div>
-      <div className="flex flex-col w-full min-h-screen h-full bg-primary-900">
-        <div className="bg-blue-500 h-[285px] shadow-default rounded-b-[50%_20%] p-5">
+    <div className="min-h-screen bg-primary-900">
+      <div className="flex flex-col">
+        <div className="bg-blue-500 h-[285px] shadow-default rounded-b-[50%_20%] px-8 py-5">
           <VoteHeader title="투표 하기" />
           <VoteTitle />
-          <div className="px-16 w-full h-[60px] rounded-xl bg-white my-4 shadow-default flex items-center justify-between">
-            <div className="flex items-center">
+        </div>
+        <div className="px-8 h-full">
+          <div className="w-full h-[60px] rounded-xl bg-white my-4 shadow-default flex items-center justify-center">
+            <div className="flex items-center mr-5">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="12" fill="#CCCCCC"/>
                 <path d="M7.19995 12L10.8 15.6L18 8.39999" stroke="white" strokeWidth="2" strokeLinecap="round"/>

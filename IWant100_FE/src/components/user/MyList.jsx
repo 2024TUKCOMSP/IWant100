@@ -11,7 +11,7 @@ function getRandomColor() {
 
 function MyList() {
   return (
-    <div className="p-[0_24px_24px_24px] text-left mt-[-16px]" style={{ height: '65vh', overflow: 'hidden' }}>
+    <div className="text-left mt-[-16px]" style={{ height: '65vh', overflow: 'hidden' }}>
       <h2 className="text-2xl font-esamanru text-blue-500 mb-4">내가 만든 투표</h2> 
       <div className="overflow-y-auto" style={{ height: '100%' }}>
         {[...Array(10)].map((_, index) => (

@@ -13,7 +13,7 @@ function App() {
       <div className="w-full min-h-screen grid grid-cols-1">
         <div className="bg-white"></div>
         <div className="min-h-screen h-full flex justify-center items-center">
-          <div className="shadow-2xl min-h-screen h-full w-full h-full w-full min-w-[405px] max-w-[500px]">
+          <div className="shadow-2xl min-h-screen h-full w-full min-w-[405px] max-w-[500px]">
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<MainPage />} />

@@ -19,8 +19,8 @@ function ResultItem() {
   ].map(item => ({ ...item, color: getRandomColor() }));
 
   return (
-    <div className="rounded-[30px] bg-[#E8ECFA] flex flex-col p-6 box-sizing-border mt-6">
-      <div className="shadow-sm rounded-[16px] bg-white flex flex-col items-center p-14 w-full box-sizing-border">
+    <div className="rounded-[30px] bg-[#E8ECFA] flex flex-col p-4 box-sizing-border mt-6">
+      <div className="shadow-sm rounded-[16px] bg-white flex flex-col items-center p-10 w-full box-sizing-border">
         {resultData.map((item, index) => (
           <div key={index} className="mb-6 flex flex-col items-center w-full box-sizing-border">
             <div className="mb-4 flex justify-between w-full box-sizing-border">
