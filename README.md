@@ -47,7 +47,7 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 ## 📱퍼블리싱📱
 Login Page |Home Page|
 -------------|---------|
-<img width="300" alt="스크린샷 2024-07-23 오후 7 13 25" src="https://github.com/user-attachments/assets/dced72e4-fc2d-4a02-aefc-2b621db6d0d4">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 21" src="https://github.com/user-attachments/assets/fc405373-f810-4516-8903-638d5eeb9652">|
+<img width="300" alt="스크린샷 2024-07-23 오후 7 13 25" src="https://github.com/user-attachments/assets/27c861e1-c4e4-4a1b-b006-7a3ede223db2">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 21" src="https://github.com/user-attachments/assets/fc405373-f810-4516-8903-638d5eeb9652">|
 
 User Page|Vote Create page|
 --------------------|-----------------|
