@@ -29,7 +29,7 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 |:-:|:-:|:-:|
 |[@min-minnn](https://github.com/min-minnn)|seung yeon<br/>[@moanuna](https://github.com/moanuna)|[@6suhyeon](https://github.com/6suhyeon)|
 ## 💡 기술 스택 💡
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"/>
 
 - Spring Boot: 투표와 투표 결과를 저장하고 실시간으로 동기화한다.
 - JavaScript, HTML, CSS: 프론트엔드 개발을 위해 사용된다.
