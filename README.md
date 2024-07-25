@@ -33,7 +33,7 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 
 - Spring Boot: 투표와 투표 결과를 저장하고 실시간으로 동기화한다.
 - JavaScript, HTML, CSS: 프론트엔드 개발을 위해 사용된다.
-- Frameworks/Libraries (React): 프론트엔드 프레임워크를 사용할 수 있다.
+- tailwind Css: 기존의 CSS에서 클래스 이름을 지정해야 하는 수고를 덜어주어, 빠른 퍼블리싱 진행이 가능하다. (https://tailwindcss.com/)
 ## 🚨 정기회의 🚨
 - 화요일 12시
 - 목요일 19시
