@@ -42,6 +42,7 @@ React와 Spring Boot를 통해 실시간 투표 앱을 개발하면서 React와 
 <img width="639" alt="스크린샷 2024-07-23 오후 7 34 36" src="https://github.com/user-attachments/assets/55058f8f-89ea-4127-b36c-baf2401f822e">
 
 ## 👩🏻‍💻 Figma Design 👩🏻‍💻
+- [figma design templete](https://www.figma.com/design/oC4dDAnnFtwFvLdPCN7ZWh/IWANT100?node-id=38-429&t=hfPXYydnd9uwpj8T-0)
 <img width="639" alt="스크린샷 2024-07-23 오후 7 41 22" src="https://github.com/user-attachments/assets/e7c50f07-70fa-41b4-aa42-0a3ec4ccea19">
 
 ## 📱퍼블리싱📱
