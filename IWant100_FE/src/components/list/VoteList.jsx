@@ -18,7 +18,7 @@ function VoteList() {
   };
 
   return (
-    <div className="p-6 text-left" style={{ height: '65vh', overflow: 'hidden' }}>
+    <div className="px-8 text-left" style={{ height: '65vh', overflow: 'hidden' }}>
       <div className="overflow-y-auto" style={{ height: '100%' }}>
         {[...Array(10)].map((_) => (
           <div 

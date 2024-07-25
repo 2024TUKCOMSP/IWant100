@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import './App.css';
-import './css/esamanru.css';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './components/login/LoginPage';
 import MainPage from './components/main/MainPage';
 import CreateVotePage from './components/create/CreateVotePage';
@@ -13,23 +10,25 @@ import VotePage from './components/vote/VotePage';
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-full h-screen grid grid-cols-[1fr_430px_1fr]">
-        <div className='h-full'></div>
-        <div className='shadow-xl h-full'>
-          <Routes>
-            <Route path='/login' element={<LoginPage />}></Route>
-            <Route path='/' element={<MainPage />}></Route>
-            <Route path='/create' element={<CreateVotePage />}></Route>
-            <Route path='/list' element={<VoteListPage />}></Route>
-            <Route path='/user' element={<UserPage />}></Route>
-            <Route path='/result' element={<ResultPage />}></Route>
-            <Route path='/vote/:id' element={<VotePage />}></Route>
-          </Routes>
+      <div className="w-full min-h-screen grid grid-cols-1">
+        <div className="bg-white"></div>
+        <div className="min-h-screen h-full flex justify-center items-center">
+          <div className="shadow-2xl min-h-screen h-full w-full min-w-[405px] max-w-[500px]">
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/" element={<MainPage />} />
+              <Route path="/create" element={<CreateVotePage />} />
+              <Route path="/list" element={<VoteListPage />} />
+              <Route path="/user" element={<UserPage />} />
+              <Route path="/result" element={<ResultPage />} />
+              <Route path="/vote/:id" element={<VotePage />} />
+            </Routes>
+          </div>
         </div>
-        <div className='h-full'></div>
+        <div className="bg-white"></div>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
