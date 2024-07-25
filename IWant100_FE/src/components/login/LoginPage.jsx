@@ -3,7 +3,7 @@ import React from "react";
 function LoginPage() {
   return (
     <div>
-      <div className="h-[260px] bg-login-header p-5"></div>
+      <div className="w-full min-h-[280px] w-[698px] flex items-center border-radius-custom bg-blue-500 bg-no-repeat p-5"></div>
       <div className="w-full min-h-full relative">
         <div className="relative px-8 flex flex-col justify-center items-center">
           <div className="w-full">
