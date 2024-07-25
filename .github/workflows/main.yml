@@ -2,13 +2,23 @@ name: Review Assign
 
 on:
   pull_request:
-    types: [opened, ready_for_review]
 
 jobs:
-  assign:
+  set-reviewers:
+    name: Set reviewers
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     steps:
-      - uses: hkusu/review-assign-action@v1
-        with:
-          assignees: ${{ github.actor }} # assign pull request author
-          reviewers: moanuna, 6suhyeon, min-minnn
+      - name: Set reviewers
+        run: |
+          actor="$"
+          reviewers=("moanuna" "6suhyeon" "min-minnn")
+
+          reviewers=($(printf "%s\n" "${reviewers[@]}" | grep -v "$actor" | shuf -n 2))
+          reviewers=$(printf '%s\n' "${reviewers[@]}" | jq -R . | jq -s .)
+
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $" \
+            -d "{ \"reviewers\": $reviewers }" \
+            "https://api.github.com/repos/$/pulls/$/requested_reviewers"
