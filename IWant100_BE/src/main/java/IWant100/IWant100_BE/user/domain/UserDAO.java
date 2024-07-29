@@ -20,4 +20,5 @@ public class UserDAO {
     String oauthId;
     String accessToken;
     String userImage;
+    String email;
 }
