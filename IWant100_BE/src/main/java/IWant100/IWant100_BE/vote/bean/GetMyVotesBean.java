@@ -7,6 +7,7 @@ import IWant100.IWant100_BE.vote.domain.Vote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class GetMyVotesBean {
     public List<ResponseVoteGetDTO> exec(UUID userId) {
         // userId를 통해 원하는 투표 찾기
         List<Vote> voteList = getVotesDAOBean.exec(userId);
-        if(voteList.isEmpty()) return null;
+        if(voteList.isEmpty()) return new ArrayList<>();
 
         // 찾는 투표를 통해 DTO 생성 후 반환
         return createVotesDTOBean.exec(voteList);
