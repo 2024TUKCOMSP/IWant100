@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import profileIcon from '../../assets/profile_icon.svg';
 import createIcon from '../../assets/create_icon.svg';
@@ -7,6 +7,7 @@ import tinoIcon from '../../assets/tino.svg';
 
 function MainPage() {
   const navigate = useNavigate();
+  const [voteInfo, setVoteInfo] = useState(null);
 
   const handleCreateVote = () => {
     navigate('/create');
@@ -17,6 +18,29 @@ function MainPage() {
   const handleUser = () => {
     navigate('/user');
   };
+
+  useEffect(() => {
+    const fetchVote = async () => {
+      try {
+        const response = await fetch('http://43.201.24.231:8091/vote', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const result = await response.json();
+        if (result.success) {
+          setVoteInfo(result.voteInfo);
+        } else {
+          console.error(result.message);
+        }
+      } catch (error) {
+        console.error('Error fetching vote:', error);
+      }
+    };
+
+    fetchVote();
+  }, []);
 
   return (
     <div className="relative text-center min-h-screen bg-gray-100">
@@ -32,19 +56,23 @@ function MainPage() {
       </header>
       <main className="p-8 text-left">
         <h2 className="text-red-500 text-2xl font-bold mb-4">HOT</h2>
-        <div className="bg-white p-4 rounded-lg shadow-md mb-8">
-          <h3 className="font-bold mt-2 ml-2 mb-10">Popular vote</h3>
-          <p className="font-bold ml-4 mb-4">고양이보다 강아지가 귀엽다.</p>
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-xs ml-1">648 of 751</p>
-            <p className="text-xs mr-1">투표 선택지 이름</p>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="w-full bg-gray-200 rounded h-2.5">
-              <div className="bg-red-500 h-2.5 rounded" style={{ width: '86%' }}></div>
+        {voteInfo ? (
+          <div className="bg-white p-4 rounded-lg shadow-md mb-8">
+            <h3 className="font-bold mt-2 ml-2 mb-10">{voteInfo.voteIntro}</h3>
+            <p className="font-bold ml-4 mb-4">{voteInfo.voteItemContent}</p>
+            <div className="flex justify-between items-center mb-2">
+              <p className="text-xs ml-1">{`${voteInfo.voteCount} votes`}</p>
+              <p className="text-xs mr-1">{`Ends at: ${new Date(voteInfo.endAt).toLocaleString()}`}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="w-full bg-gray-200 rounded h-2.5">
+                <div className="bg-red-500 h-2.5 rounded" style={{ width: `${(voteInfo.voteItemCount / voteInfo.voteCount) * 100}%` }}></div>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <p className="text-center text-gray-500">Loading popular vote...</p>
+        )}
         <section className="flex flex-col gap-8">
           <button 
             className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md group"
