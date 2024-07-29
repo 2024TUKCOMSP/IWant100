@@ -13,6 +13,7 @@ function getRandomColor() {
 function VoteList({ searchTerm }) {
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
+  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
 
   useEffect(() => {
     const fetchVotes = async () => {
@@ -23,6 +24,11 @@ function VoteList({ searchTerm }) {
             'Content-Type': 'application/json',
           },
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
         if (result.success) {
           setVotes(result.voteList || []);
@@ -37,12 +43,37 @@ function VoteList({ searchTerm }) {
     fetchVotes();
   }, []);
 
-  const handleBoxClick = (voteId) => {
-    navigate(`/vote/${voteId}`);
+  const handleBoxClick = async (voteId) => {
+    if (!userId) {
+      console.error('User ID is not defined');
+      return;
+    }
+    
+    try {
+      const response = await fetch(`http://43.201.24.231:8091/vote-content/vote/${voteId}/user/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result.success && result.voteInfo) {
+        navigate(`/vote/${voteId}`);
+      } else {
+        navigate('/result');
+      }
+    } catch (error) {
+      console.error('Error checking vote details:', error);
+    }
   };
 
   const filteredVotes = votes.filter((vote) =>
-    vote.voteItemContent.toLowerCase().includes(searchTerm.toLowerCase())
+    (vote.voteItemContent || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
