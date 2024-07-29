@@ -1,6 +1,5 @@
 package IWant100.IWant100_BE.user.controller;
 
-import IWant100.IWant100_BE.user.domain.DTO.ResponseUserGetDTO;
 import IWant100.IWant100_BE.user.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
