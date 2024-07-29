@@ -13,7 +13,7 @@ function getRandomColor() {
 function ResultItem() {
   const [resultData, setResultData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const voteId = 'ff7a34bd-780d-479d-bcf9-a0e676ae3ad3';
+  const voteId = 'd364bc91-49b9-4ada-b6c0-5a1632f58bae';
 
   useEffect(() => {
     axios.get(`http://43.201.24.231:8091/vote-content/vote/${voteId}`)
@@ -48,7 +48,7 @@ function ResultItem() {
           <div key={index} className="mb-6 flex flex-col items-center w-full box-sizing-border">
             <div className="mb-4 flex justify-between w-full box-sizing-border">
               <p className="w-24 font-bold text-[13px] text-[#414D55]">
-                {item.voteItemId}
+                {item.voteItemContent}
               </p>
               <div className="text-[#28B5E1] text-[12px] font-medium">
                 Votes: {item.voteItemCount}

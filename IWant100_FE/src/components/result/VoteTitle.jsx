@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function VoteTitle() {
-  const [voteId, setVoteId] = useState('ff7a34bd-780d-479d-bcf9-a0e676ae3ad3');
+  const [voteId, setVoteId] = useState('d364bc91-49b9-4ada-b6c0-5a1632f58bae');
   const [voteInfo, setVoteInfo] = useState({ voteIntro: "", endAt: "" });
   const [error, setError] = useState("");
 
