@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -10,13 +11,35 @@ function getRandomColor() {
 }
 
 function ResultItem() {
-  const resultData = [
-    { label: "매우 그렇다", width: "120px" },
-    { label: "그렇다", width: "108.7px" },
-    { label: "보통이다", width: "256.4px" },
-    { label: "그렇지 않다", width: "236px" },
-    { label: "매우 그렇지 않다", width: "167.8px" }
-  ].map(item => ({ ...item, color: getRandomColor() }));
+  const [resultData, setResultData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const voteId = 'ff7a34bd-780d-479d-bcf9-a0e676ae3ad3';
+
+  useEffect(() => {
+    axios.get(`http://43.201.24.231:8091/vote-content/vote/${voteId}`)
+      .then(response => {
+        if (response.data.success) {
+          const voteInfo = response.data.voteInfo;
+          const coloredData = voteInfo.voteItemList.map(item => ({
+            voteItemId: item.voteItemId,
+            voteItemCount: item.voteItemCount,
+            color: getRandomColor()
+          }));
+          setResultData(coloredData);
+        } else {
+          setErrorMessage(response.data.message);
+        }
+      })
+      .catch(error => {
+        setErrorMessage("An error occurred while fetching the data.");
+      });
+  }, [voteId]);
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
+
+  const totalVotes = resultData.reduce((sum, item) => sum + item.voteItemCount, 0);
 
   return (
     <div className="rounded-[30px] bg-[#E8ECFA] flex flex-col p-4 box-sizing-border mt-6">
@@ -24,13 +47,15 @@ function ResultItem() {
         {resultData.map((item, index) => (
           <div key={index} className="mb-6 flex flex-col items-center w-full box-sizing-border">
             <div className="mb-4 flex justify-between w-full box-sizing-border">
-              <p className="w-24 font-bold text-[13px] text-[#414D55]"></p>
+              <p className="w-24 font-bold text-[13px] text-[#414D55]">
+                {item.voteItemId}
+              </p>
               <div className="text-[#28B5E1] text-[12px] font-medium">
-                {item.label}
+                Votes: {item.voteItemCount}
               </div>
             </div>
             <div className="rounded-[2.5px] bg-[#E4EAF0] w-full h-[10px] box-sizing-border">
-              <div className="rounded-[2px]" style={{ backgroundColor: item.color, width: item.width, height: '10px' }}></div>
+              <div className="rounded-[2px]" style={{ backgroundColor: item.color, width: `${(item.voteItemCount / totalVotes) * 100}%`, height: '10px' }}></div>
             </div>
           </div>
         ))}
