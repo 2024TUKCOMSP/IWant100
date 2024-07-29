@@ -58,11 +58,11 @@ function MainPage() {
         <h2 className="text-red-500 text-2xl font-bold mb-4">HOT</h2>
         {voteInfo ? (
           <div className="bg-white p-4 rounded-lg shadow-md mb-8">
-            <h3 className="font-bold mt-2 ml-2 mb-10">{voteInfo.voteIntro}</h3>
-            <p className="font-bold ml-4 mb-4">{voteInfo.voteItemContent}</p>
+            <h3 className="font-bold mt-2 ml-2 mb-10">Popular Vote</h3>
+            <p className="font-bold ml-4 mb-4">{voteInfo.voteIntro}</p>
             <div className="flex justify-between items-center mb-2">
               <p className="text-xs ml-1">{`${voteInfo.voteCount} votes`}</p>
-              <p className="text-xs mr-1">{`Ends at: ${new Date(voteInfo.endAt).toLocaleString()}`}</p>
+              <p className="text-xs mr-1">{voteInfo.voteItemContent}</p>
             </div>
             <div className="flex items-center justify-between">
               <div className="w-full bg-gray-200 rounded h-2.5">
