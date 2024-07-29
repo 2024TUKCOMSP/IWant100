@@ -20,4 +20,9 @@ public class GetUserDAOBean {
     public UserDAO exec(UUID userId) {
         return userRepositoryJPA.findById(userId).orElse(null);
     }
+
+    // oauthId를 통해 원하는 유저 찾기
+    public UserDAO exec(String oauthId) {
+        return userRepositoryJPA.findByOauthId(oauthId);
+    }
 }
