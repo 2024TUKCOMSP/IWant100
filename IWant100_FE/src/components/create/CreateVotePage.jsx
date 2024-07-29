@@ -12,20 +12,13 @@ function CreateVotePage() {
             <Header title="투표 생성" />
             <InputBox />
           </div>
-          <div className="px-16 w-full h-[60px] rounded-xl bg-white my-4 shadow-default flex items-center justify-between">
+          <div className="px-16 w-full h-[60px] rounded-xl bg-white my-4 shadow-default flex items-center justify-center">
             <div className="flex items-center cursor-pointer">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="12" fill="#CCCCCC"/>
                 <path d="M7.19995 12L10.8 15.6L18 8.39999" stroke="white" strokeWidth="2" strokeLinecap="round"/>
               </svg>  
-              <div className="ml-2 font-esamanru text-lg text-secondary-900">복수 투표</div>
-            </div>
-            <div className="flex items-center cursor-pointer">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="12" fill="#CCCCCC"/>
-                <path d="M7.19995 12L10.8 15.6L18 8.39999" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              </svg>  
-              <div className="ml-2 font-esamanru text-lg text-secondary-900">익명 사용</div>
+              <div className="ml-2 font-esamanru text-lg text-secondary-900">복수 투표 사용</div>
             </div>
           </div>
           <div className="w-full h-auto bg-primary-600 rounded-xl p-5">
