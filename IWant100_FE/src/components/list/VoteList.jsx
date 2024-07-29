@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function getRandomColor() {
@@ -10,32 +10,63 @@ function getRandomColor() {
   return color;
 }
 
-function VoteList() {
+function VoteList({ searchTerm }) {
   const navigate = useNavigate();
+  const [votes, setVotes] = useState([]);
 
-  const handleBoxClick = () => {
-    navigate(`/vote/1`);
+  useEffect(() => {
+    const fetchVotes = async () => {
+      try {
+        const response = await fetch('http://43.201.24.231:8091/vote/all', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const result = await response.json();
+        if (result.success) {
+          setVotes(result.voteList || []);
+        } else {
+          console.error(result.message);
+        }
+      } catch (error) {
+        console.error('Error fetching votes:', error);
+      }
+    };
+
+    fetchVotes();
+  }, []);
+
+  const handleBoxClick = (voteId) => {
+    navigate(`/vote/${voteId}`);
   };
+
+  const filteredVotes = votes.filter((vote) =>
+    vote.voteItemContent.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="px-8 text-left" style={{ height: '65vh', overflow: 'hidden' }}>
       <div className="overflow-y-auto" style={{ height: '100%' }}>
-        {[...Array(10)].map((_) => (
+        {filteredVotes.map((vote) => (
           <div 
+            key={vote.voteId}
             className="bg-white p-4 rounded-lg shadow-md mb-8 cursor-pointer" 
-            onClick={handleBoxClick}
+            onClick={() => handleBoxClick(vote.voteId)}
           >
             <div className="flex justify-between items-center mb-2">
-              <p className="font-bold ml-1 mb-4 font-esamanru">고양이보다 강아지가 귀엽다.</p>
-              <p className="text-red-500 font-bold text-xs mr-1 mb-4">D-1</p>
+              <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteItemContent}</p>
+              <p className="text-red-500 font-bold text-xs mr-1 mb-4">
+                D-{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))}
+              </p>
             </div>
             <div className="flex justify-between items-center mb-2">
-              <p className="text-xs ml-1 font-semibold">700명 참여</p>
+              <p className="text-xs ml-1 font-semibold">{`${vote.voteCount || 0}명 참여`}</p>
               <p className="text-xs mr-1 font-semibold">투표 선택지 이름</p>
             </div>
             <div className="flex items-center justify-between">
               <div className="w-full bg-gray-200 rounded h-2.5">
-                <div className="h-2.5 rounded" style={{ width: '86%', backgroundColor: getRandomColor() }}></div>
+                <div className="h-2.5 rounded" style={{ width: `${(vote.voteItemCount / (vote.voteCount || 1)) * 100}%`, backgroundColor: getRandomColor() }}></div>
               </div>
             </div>
           </div>

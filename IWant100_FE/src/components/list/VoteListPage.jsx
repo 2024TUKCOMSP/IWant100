@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./ListHeader.jsx";
 import SearchInputBox from "./SearchInputBox.jsx";
 import VoteList from "./VoteList.jsx";
 
 function VoteListPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div>
       <div className="flex flex-col w-full min-h-screen h-full bg-primary-900">
@@ -11,9 +13,9 @@ function VoteListPage() {
           <div>
             <Header title="투표 목록" />
           </div>
-          <SearchInputBox />
+          <SearchInputBox onSearch={setSearchTerm} />
         </div>
-        <VoteList /> 
+        <VoteList searchTerm={searchTerm} /> 
       </div>
     </div>
   );
