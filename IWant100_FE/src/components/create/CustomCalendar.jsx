@@ -19,7 +19,7 @@ const CustomCalendar = ({onChange, value}) => {
 
   return (
     <div className='relative z-10 flex flex-col justify-end items-end'>
-      <div className='w-full flex justify-end underline' onClick={handleCalendarOpen}>투표 마감일: {nowDate}</div>
+      <div className='w-full flex justify-end underline' onClick={handleCalendarOpen}>투표 마감 기한: {nowDate}</div>
       {isOpen && (
         <div className='absolute top-full'>
           <Calendar 
