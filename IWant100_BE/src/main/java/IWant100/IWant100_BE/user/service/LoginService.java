@@ -49,6 +49,7 @@ public class LoginService {
         String oauthId = userResourceNode.get("id").asText();
         String nickName = userResourceNode.get("name").asText();
         String userImage = userResourceNode.get("picture").asText();
+        String email = userResourceNode.get("email").asText();
 
         UserDAO userDAO = getUserDAOBean.exec(oauthId);
         if (userDAO == null){
@@ -60,6 +61,7 @@ public class LoginService {
             userDAO.setNickName(nickName);
             userDAO.setUserImage(userImage);
             userDAO.setAccessToken(accessToken);
+            userDAO.setEmail(email);
         }
         // oauthId가 이미 DB에 존재할 경우
         else {
@@ -89,8 +91,6 @@ public class LoginService {
         params.add("client_secret", clientSecret);
         params.add("redirect_uri", redirectUri);
         params.add("grant_type", "authorization_code");
-
-        System.out.println("redirectUri = " + redirectUri);
 
         // 요청에 쓸 헤더 설정
         HttpHeaders headers =  new HttpHeaders();
