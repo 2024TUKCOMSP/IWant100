@@ -11,4 +11,5 @@ public class ResponseUserGetDTO {
     UUID userId;
     String userImage;
     String nickName;
+    String email;
 }
