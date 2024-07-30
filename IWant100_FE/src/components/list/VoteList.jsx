@@ -88,7 +88,7 @@ function VoteList({ searchTerm }) {
             <div className="flex justify-between items-center mb-2">
               <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteIntro}</p>
               <p className="text-red-500 font-bold text-xs mr-1 mb-4">
-                D-{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))}
+                D{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))}
               </p>
             </div>
             <div className="flex justify-between items-center mb-2">

@@ -4,13 +4,13 @@ import moment from "moment";
 import VoteTitle from "../result/VoteTitle";
 import VoteHeader from "../vote/VoteHeader";
 import VoteItem from "../vote/VoteItem";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function VotePage() {
   const HOST = 'http://43.201.24.231:8091';
 
+  const { voteId } = useParams();
   const [vote, setVote] = useState(null);
-  const [voteId, setVoteId] = useState('d364bc91-49b9-4ada-b6c0-5a1632f58bae');
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
   const [isActive, setIsActive] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,7 @@ function VotePage() {
   if (!vote) return null;
 
   // 날짜 포맷 적용
-  const formattedEndDate = moment(vote.endAt).format("YYYY년 MM월 DD일");
+  const formattedEndDate = moment(vote.endAt).format("YYYY. MM. DD.");
 
   return (
     <div className="min-h-screen bg-primary-900">
