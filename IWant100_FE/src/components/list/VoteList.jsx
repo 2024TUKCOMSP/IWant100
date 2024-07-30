@@ -45,12 +45,25 @@ function VoteList({ searchTerm }) {
     fetchVotes();
   }, []);
 
-  const handleBoxClick = async (voteId) => {
+  const handleBoxClick = async (voteId, endAt) => {
     if (!userId) {
       console.error('User ID is not defined');
       return;
     }
     
+    const currentDate = new Date();
+    const endDate = new Date(endAt);
+
+    // 날짜 비교를 위해 시간을 제거하여 동일한 날짜인지 확인
+    const currentDateNoTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime();
+    const endDateNoTime = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()).getTime();
+
+    if (currentDateNoTime > endDateNoTime) {
+      console.log('Navigating to result page due to date condition');
+      navigate(`/result/${voteId}`);
+      return;
+    }
+
     try {
       const response = await fetch(`${HOST}/vote-content/vote/${voteId}/user/${userId}`, {
         method: 'GET',
@@ -64,6 +77,7 @@ function VoteList({ searchTerm }) {
       }
 
       const result = await response.json();
+      
       if (result.success && result.voteInfo) {
         navigate(`/vote/${voteId}`);
       } else {
@@ -85,12 +99,12 @@ function VoteList({ searchTerm }) {
           <div 
             key={vote.voteId}
             className="bg-white p-4 rounded-lg shadow-md mb-8 cursor-pointer" 
-            onClick={() => handleBoxClick(vote.voteId)}
+            onClick={() => handleBoxClick(vote.voteId, vote.endAt)}
           >
             <div className="flex justify-between items-center mb-2">
               <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteIntro}</p>
               <p className="text-red-500 font-bold text-xs mr-1 mb-4">
-                D-{Math.abs(Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))) === 0 ? 'day' : Math.abs(Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24)))}
+                D-{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24)) === 0 ? 'day' : Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24)) < 0 ? 'end' : Math.abs(Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24)))}
               </p>
             </div>
             <div className="flex justify-between items-center mb-2">
