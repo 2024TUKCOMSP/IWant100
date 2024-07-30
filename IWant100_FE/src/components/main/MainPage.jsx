@@ -8,6 +8,7 @@ import tinoIcon from '../../assets/tino.svg';
 function MainPage() {
   const navigate = useNavigate();
   const [voteInfo, setVoteInfo] = useState(null);
+  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
 
   const handleCreateVote = () => {
     navigate('/create');
@@ -17,6 +18,26 @@ function MainPage() {
   };
   const handleUser = () => {
     navigate('/user');
+  };
+
+  const handleVoteClick = async () => {
+    try {
+      const voteId = voteInfo.voteId;
+      const response = await fetch(`http://43.201.24.231:8091/vote-content/vote/${voteId}/user/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const result = await response.json();
+      if (result.success && result.voteInfo) {
+        navigate(`/vote/${voteId}`);
+      } else {
+        navigate('/result');
+      }
+    } catch (error) {
+      console.error('Error fetching vote content:', error);
+    }
   };
 
   useEffect(() => {
@@ -50,19 +71,19 @@ function MainPage() {
           <h2 className="text-2xl mb-2 font-bold">IWANT100</h2>
         </div>
         <div className="absolute top-6 right-8">
-          <img src={profileIcon} alt="Profile" className="w-6 h-6" onClick={handleUser}/>
+          <img src={profileIcon} alt="Profile" className="w-6 h-6" onClick={handleUser} />
         </div>
         <img src={tinoIcon} alt="Tino" className="absolute right-[5%] bottom-[10%] w-1/2 h-auto" />
       </header>
       <main className="p-8 text-left">
         <h2 className="text-red-500 text-2xl font-bold mb-4">HOT</h2>
         {voteInfo ? (
-          <div className="bg-white p-4 rounded-lg shadow-md mb-8">
-            <h3 className="font-bold mt-2 ml-2 mb-10">{voteInfo.voteIntro}</h3>
-            <p className="font-bold ml-4 mb-4">{voteInfo.voteItemContent}</p>
+          <div className="bg-white p-4 rounded-lg shadow-md mb-8" onClick={handleVoteClick}>
+            <h3 className="font-bold mt-2 ml-2 mb-10">Popular Vote</h3>
+            <p className="font-bold ml-4 mb-4">{voteInfo.voteIntro}</p>
             <div className="flex justify-between items-center mb-2">
               <p className="text-xs ml-1">{`${voteInfo.voteCount} votes`}</p>
-              <p className="text-xs mr-1">{`Ends at: ${new Date(voteInfo.endAt).toLocaleString()}`}</p>
+              <p className="text-xs mr-1">{voteInfo.voteItemContent}</p>
             </div>
             <div className="flex items-center justify-between">
               <div className="w-full bg-gray-200 rounded h-2.5">
@@ -74,7 +95,7 @@ function MainPage() {
           <p className="text-center text-gray-500">Loading popular vote...</p>
         )}
         <section className="flex flex-col gap-8">
-          <button 
+          <button
             className="bg-white text-blue-600 p-5 rounded hover:bg-blue-600 hover:text-white text-2xl font-bold flex items-center justify-between shadow-md group"
             onClick={handleCreateVote}
           >

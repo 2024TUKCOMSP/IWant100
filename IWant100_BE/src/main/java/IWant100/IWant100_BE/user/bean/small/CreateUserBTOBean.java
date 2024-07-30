@@ -13,6 +13,7 @@ public class CreateUserBTOBean {
                 .userId(userDAO.getUserId())
                 .userImage(userDAO.getUserImage())
                 .nickName(userDAO.getNickName())
+                .email(userDAO.getEmail())
                 .build();
     }
 }
