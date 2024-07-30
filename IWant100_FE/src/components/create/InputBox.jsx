@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import CustomCalendar from "./CustomCalendar";
 
-function InputBox() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [voteTitle, setVoteTitle] = useState('');
+function InputBox({ voteTitle, setVoteTitle, selectedDate, setSelectedDate }) {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
