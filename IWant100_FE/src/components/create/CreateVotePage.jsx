@@ -9,7 +9,7 @@ function CreateVotePage() {
   const HOST = import.meta.env.VITE_TEST_HOST;
 
   const [voteTitle, setVoteTitle] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date()); // Initialize with current date
   const [isDuplication, setIsDuplication] = useState(false);
   const [voteItems, setVoteItems] = useState([{ id: 1, value: "" }]);
 
@@ -39,21 +39,32 @@ function CreateVotePage() {
     const filteredVoteItems = voteItems
       .filter(item => item.value.trim() !== "")
       .map(item => item.value);
-
-    const res = await axios.post(`${HOST}/vote`, {
-      "userId" : "b635ee82-a8ea-4854-9e3d-a218532d1d0a",
-      "voteIntro" : voteTitle,
-      "isDuplication" : isDuplication,
-      "endAt": selectedDate.toISOString(),
-      "voteItemList": filteredVoteItems
-    })
+  
+    // 선택된 날짜를 로컬 시간대 기준으로 설정
+    const localDate = new Date(selectedDate);
+    localDate.setHours(0, 0, 0, 0); // 시간을 00:00:00으로 설정하여 날짜의 시작을 보장
     
-    if(res.data.success) {
+    // 서버에 전송하기 위해 UTC로 변환
+    const utcDate = new Date(Date.UTC(
+      localDate.getFullYear(),
+      localDate.getMonth(),
+      localDate.getDate()
+    ));
+  
+    const res = await axios.post(`${HOST}/vote`, {
+      "userId": "b635ee82-a8ea-4854-9e3d-a218532d1d0a",
+      "voteIntro": voteTitle,
+      "isDuplication": isDuplication,
+      "endAt": utcDate.toISOString(), // ISO 문자열로 변환하여 서버에 전송
+      "voteItemList": filteredVoteItems
+    });
+  
+    if (res.data.success) {
       navigate('/list');
     } else {
       alert('투표 생성을 하지 못했어요.');
     }
-  };
+  };  
 
   return (
     <div>
