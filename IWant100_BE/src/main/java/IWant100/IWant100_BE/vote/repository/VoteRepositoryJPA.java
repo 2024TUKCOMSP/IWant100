@@ -13,7 +13,7 @@ public interface VoteRepositoryJPA extends JpaRepository<Vote, UUID> {
     List<Vote> findAllByOrderByEndAtAsc();
 
     // 제일 많은 투표 수를 가진 투표 객체 찾기
-    Vote findTop1ByOrderByVoteCountDesc();
+    Vote findTop1ByOrderByVoteCountDescCreateAtAsc();
 
     // userId를 통해 투표 전체 오래된 순으로 찾기
     List<Vote> findAllByUserIdOrderByEndAtAsc(UUID userId);
