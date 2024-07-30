@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -15,7 +16,7 @@ function ResultItem() {
 
   const [resultData, setResultData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const voteId = 'd364bc91-49b9-4ada-b6c0-5a1632f58bae';
+  const { voteId } = useParams();
 
   useEffect(() => {
     axios.get(`${HOST}/vote-content/vote/${voteId}`)
