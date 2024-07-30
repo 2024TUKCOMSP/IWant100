@@ -9,7 +9,7 @@ function CreateVotePage() {
   const HOST = import.meta.env.VITE_TEST_HOST;
 
   const [voteTitle, setVoteTitle] = useState('');
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Initialize with current date
+  const [selectedDate, setSelectedDate] = useState(); 
   const [isDuplication, setIsDuplication] = useState(false);
   const [voteItems, setVoteItems] = useState([{ id: 1, value: "" }]);
 
@@ -39,6 +39,21 @@ function CreateVotePage() {
     const filteredVoteItems = voteItems
       .filter(item => item.value.trim() !== "")
       .map(item => item.value);
+
+    if (voteTitle.trim() === '') {
+      alert('투표 제목을 입력하세요.');
+      return;
+    }
+    
+    if (filteredVoteItems.length < 2) {
+      alert('투표 항목을 최소 2개 이상 입력하세요.');
+      return;
+    }
+    
+    if (!selectedDate) {
+      alert('마감 날짜를 설정하세요.');
+      return;
+    }
   
     // 선택된 날짜를 로컬 시간대 기준으로 설정
     const localDate = new Date(selectedDate);
@@ -64,7 +79,7 @@ function CreateVotePage() {
     } else {
       alert('투표 생성을 하지 못했어요.');
     }
-  };  
+  }; 
 
   return (
     <div>
