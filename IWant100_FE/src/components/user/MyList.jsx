@@ -11,6 +11,8 @@ function getRandomColor() {
 }
 
 function MyList() {
+  const HOST = import.meta.env.VITE_TEST_HOST;
+
   const [voteList, setVoteList] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
@@ -18,8 +20,8 @@ function MyList() {
   useEffect(() => {
     const fetchVotes = async () => {
       try {
-        const response = await axios.get(`http://43.201.24.231:8091/vote/all/user/${userId}`);
-        console.log(response.data);
+        const response = await axios.get(`${HOST}/vote/all/user/${userId}`);
+
         if (response.data.success) {
           setVoteList(response.data.voteList);
         } else {
@@ -36,13 +38,13 @@ function MyList() {
 
   const handleDelete = async (voteId) => {
     try {
-      const response = await axios.delete('http://43.201.24.231:8091/vote', {
+      const response = await axios.delete('${HOST}/vote', {
         data: {
           voteId: voteId,
           userId: userId
         }
       });
-      console.log(response.data);
+      
       if (response.data.success) {
         setVoteList(voteList.filter(vote => vote.voteId !== voteId));
       } else {

@@ -7,7 +7,7 @@ import VoteItem from "../vote/VoteItem";
 import { useNavigate, useParams } from "react-router";
 
 function VotePage() {
-  const HOST = 'http://43.201.24.231:8091';
+  const HOST = import.meta.env.VITE_TEST_HOST;
 
   const { voteId } = useParams();
   const [vote, setVote] = useState(null);
@@ -20,7 +20,6 @@ function VotePage() {
     try {
       const res = await axios.get(`${HOST}/vote-content/vote/${voteId}/user/${userId}`);
       setVote(res.data.voteInfo);
-      console.log(res.data.voteInfo)
     } catch (e) {
       setError(e);
     }
@@ -70,7 +69,7 @@ function VotePage() {
           <div 
             onClick={handleBoxClick}
             className="w-full mb-5 font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer">
-            투표 확인
+            투표 하기
           </div>
         </div>
       </div>

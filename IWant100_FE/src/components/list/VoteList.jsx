@@ -11,6 +11,8 @@ function getRandomColor() {
 }
 
 function VoteList({ searchTerm }) {
+  const HOST = import.meta.env.VITE_TEST_HOST;
+
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
@@ -18,7 +20,7 @@ function VoteList({ searchTerm }) {
   useEffect(() => {
     const fetchVotes = async () => {
       try {
-        const response = await fetch('http://43.201.24.231:8091/vote/all', {
+        const response = await fetch(`${HOST}/vote/all`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ function VoteList({ searchTerm }) {
     }
     
     try {
-      const response = await fetch(`http://43.201.24.231:8091/vote-content/vote/${voteId}/user/${userId}`, {
+      const response = await fetch(`${HOST}/vote-content/vote/${voteId}/user/${userId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +67,7 @@ function VoteList({ searchTerm }) {
       if (result.success && result.voteInfo) {
         navigate(`/vote/${voteId}`);
       } else {
-        navigate('/result');
+        navigate(`/result/${voteId}`);
       }
     } catch (error) {
       console.error('Error checking vote details:', error);
@@ -88,7 +90,7 @@ function VoteList({ searchTerm }) {
             <div className="flex justify-between items-center mb-2">
               <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteIntro}</p>
               <p className="text-red-500 font-bold text-xs mr-1 mb-4">
-                D{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))}
+                D-{Math.abs(Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24)))}
               </p>
             </div>
             <div className="flex justify-between items-center mb-2">
