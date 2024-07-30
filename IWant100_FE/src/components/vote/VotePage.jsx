@@ -12,7 +12,7 @@ function VotePage() {
   const { voteId } = useParams();
   const [vote, setVote] = useState(null);
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
-  const [isActive, setIsActive] = useState(null);
+  const [isActive, setIsActive] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -24,20 +24,49 @@ function VotePage() {
       setError(e);
     }
     setLoading(false);
-  }
+  };
 
   const navigate = useNavigate();
-
-  const handleBoxClick = () => {
-    navigate(`/result`);
-  };
 
   useEffect(() => {
     getVoteData(); // 컴포넌트가 마운트될 때 데이터 가져오기
   }, []); // 빈 배열을 의존성으로 사용하여 한 번만 실행
 
-  if (loading) return <div>로딩중..</div>
-  if (error) return <div>에러 발생!!</div>
+  const handleSelectionChange = (itemId) => {
+    if (vote.isDuplication) {
+      setIsActive((prevActive) =>
+        prevActive.includes(itemId)
+          ? prevActive.filter((id) => id !== itemId)
+          : [...prevActive, itemId]
+      );
+    } else {
+      setIsActive([itemId]);
+    }
+  };
+
+  const handleVoteSubmit = async () => {
+    console.log({
+      "userId" : userId,
+      "voteId" : voteId,
+      "voteItemList" : isActive
+    })
+
+    const res = await axios.post(`${HOST}/vote-content`, {
+      "userId" : userId,
+      "voteId" : voteId,
+      "voteItemList" : isActive
+    })
+
+    if(res.data.success) {
+      navigate(`/result/${voteId}`);
+    } else {
+      alert('투표를 실패했습니다.');
+      console.log(res.data)
+    }
+  }
+
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러 발생!!</div>;
   if (!vote) return null;
 
   // 날짜 포맷 적용
@@ -54,27 +83,35 @@ function VotePage() {
           <div className="w-full h-[60px] rounded-xl bg-white my-4 shadow-default flex items-center justify-center">
             <div className="flex items-center mr-5">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle 
+                <circle
                   cx="12" cy="12" r="12"
                   className={`${vote.isDuplication ? 'fill-primary-700' : 'fill-[#CCCCCC]'}`}
                 />
                 <path d="M7.19995 12L10.8 15.6L18 8.39999" stroke="white" strokeWidth="2" strokeLinecap="round"/>
               </svg>  
-              <div className={`ml-2 font-esamanru text-xl flex items-center ${vote.isDuplication ? 'text-primary-700' : 'text-secondary-900'}`}>{vote.isDuplication ? '복수 투표 가능' : '복수 투표 불가능'}</div>
+              <div className={`ml-2 font-esamanru text-xl flex items-center ${vote.isDuplication ? 'text-primary-700' : 'text-secondary-900'}`}>
+                {vote.isDuplication ? '복수 투표 가능' : '복수 투표 불가능'}
+              </div>
             </div>
           </div>
           <div className="w-full h-auto bg-primary-600 rounded-xl p-5 mb-5">
-            <VoteItem voteItemList={vote.voteItemList} />
+            <VoteItem
+              isActive={isActive}
+              setIsActive={handleSelectionChange}
+              voteItemList={vote.voteItemList}
+              isDuplication={vote.isDuplication}
+            />
           </div>
-          <div 
-            onClick={handleBoxClick}
-            className="w-full mb-5 font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer">
+          <div
+            onClick={handleVoteSubmit}
+            className="w-full mb-5 font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer"
+          >
             투표 하기
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default VotePage;
