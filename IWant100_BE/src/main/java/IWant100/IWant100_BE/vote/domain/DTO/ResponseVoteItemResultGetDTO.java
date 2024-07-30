@@ -7,7 +7,8 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class ResponseVoteItemCountGetDTO {
+public class ResponseVoteItemResultGetDTO {
     UUID voteItemId;
     Integer voteItemCount;
+    String voteItemContent;
 }

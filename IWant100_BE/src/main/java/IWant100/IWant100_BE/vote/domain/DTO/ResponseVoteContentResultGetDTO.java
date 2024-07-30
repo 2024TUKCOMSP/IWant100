@@ -14,5 +14,5 @@ public class ResponseVoteContentResultGetDTO {
     String voteIntro;
     LocalDateTime endAt;
     Integer voteCount;
-    List<ResponseVoteItemCountGetDTO> voteItemList;
+    List<ResponseVoteItemResultGetDTO> voteItemList;
 }
