@@ -10,7 +10,7 @@ function VotePage() {
   const HOST = 'http://43.201.24.231:8091';
 
   const [vote, setVote] = useState(null);
-  const [voteId, setVoteId] = useState('0f83ecf5-2c6c-4a67-83a4-5fdc96127321');
+  const [voteId, setVoteId] = useState('d364bc91-49b9-4ada-b6c0-5a1632f58bae');
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
   const [isActive, setIsActive] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -13,6 +13,7 @@ function getRandomColor() {
 function VoteList({ searchTerm }) {
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
+  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
 
   useEffect(() => {
     const fetchVotes = async () => {
@@ -23,6 +24,11 @@ function VoteList({ searchTerm }) {
             'Content-Type': 'application/json',
           },
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
         if (result.success) {
           setVotes(result.voteList || []);
@@ -37,12 +43,37 @@ function VoteList({ searchTerm }) {
     fetchVotes();
   }, []);
 
-  const handleBoxClick = (voteId) => {
-    navigate(`/vote/${voteId}`);
+  const handleBoxClick = async (voteId) => {
+    if (!userId) {
+      console.error('User ID is not defined');
+      return;
+    }
+    
+    try {
+      const response = await fetch(`http://43.201.24.231:8091/vote-content/vote/${voteId}/user/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result.success && result.voteInfo) {
+        navigate(`/vote/${voteId}`);
+      } else {
+        navigate('/result');
+      }
+    } catch (error) {
+      console.error('Error checking vote details:', error);
+    }
   };
 
   const filteredVotes = votes.filter((vote) =>
-    vote.voteItemContent.toLowerCase().includes(searchTerm.toLowerCase())
+    (vote.voteItemContent || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -55,14 +86,14 @@ function VoteList({ searchTerm }) {
             onClick={() => handleBoxClick(vote.voteId)}
           >
             <div className="flex justify-between items-center mb-2">
-              <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteItemContent}</p>
+              <p className="font-bold ml-1 mb-4 font-esamanru">{vote.voteIntro}</p>
               <p className="text-red-500 font-bold text-xs mr-1 mb-4">
                 D-{Math.ceil((new Date(vote.endAt) - new Date()) / (1000 * 60 * 60 * 24))}
               </p>
             </div>
             <div className="flex justify-between items-center mb-2">
               <p className="text-xs ml-1 font-semibold">{`${vote.voteCount || 0}명 참여`}</p>
-              <p className="text-xs mr-1 font-semibold">투표 선택지 이름</p>
+              <p className="text-xs mr-1 font-semibold">{vote.voteItemContent}</p>
             </div>
             <div className="flex items-center justify-between">
               <div className="w-full bg-gray-200 rounded h-2.5">
