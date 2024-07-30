@@ -18,6 +18,6 @@ public class GetVoteItemTop1DAOBean {
 
     // voteId를 통해 원하는 투표항목들 찾고 그 중 제일 많은 투표 수 조회
     public VoteItem exec(UUID voteId) {
-        return voteItemRepositoryJPA.findTop1ByVoteIdOrderByVoteItemCountDesc(voteId);
+        return voteItemRepositoryJPA.findTop1ByVoteIdOrderByVoteItemCountDescVoteItemIndexDesc(voteId);
     }
 }

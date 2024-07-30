@@ -19,6 +19,6 @@ public class GetVoteItemsDAOBean {
 
     // voteId를 통해 원하는 객체들 찾기
     public List<VoteItem> exec(UUID voteId) {
-        return voteItemRepositoryJPA.findAllByVoteId(voteId);
+        return voteItemRepositoryJPA.findAllByVoteIdOrderByVoteItemIndexAsc(voteId);
     }
 }
