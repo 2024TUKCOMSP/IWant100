@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function UserProfile() {
+  const HOST = import.meta.env.VITE_TEST_HOST;
+  
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +12,7 @@ function UserProfile() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(`http://43.201.24.231:8091/user/${userId}`, {
+        const response = await axios.get(`${HOST}/user/${userId}`, {
           headers: {
             'Content-Type': 'application/json',
           },

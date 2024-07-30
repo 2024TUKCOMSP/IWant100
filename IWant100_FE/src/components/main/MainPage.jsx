@@ -6,6 +6,7 @@ import voteIcon from '../../assets/vote_icon.svg';
 import tinoIcon from '../../assets/tino.svg';
 
 function MainPage() {
+  const HOST = import.meta.env.VITE_TEST_HOST;
   const navigate = useNavigate();
   const [voteInfo, setVoteInfo] = useState(null);
   const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
@@ -23,7 +24,7 @@ function MainPage() {
   const handleVoteClick = async () => {
     try {
       const voteId = voteInfo.voteId;
-      const response = await fetch(`http://43.201.24.231:8091/vote-content/vote/${voteId}/user/${userId}`, {
+      const response = await fetch(`${HOST}/vote-content/vote/${voteId}/user/${userId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ function MainPage() {
       if (result.success && result.voteInfo) {
         navigate(`/vote/${voteId}`);
       } else {
-        navigate('/result');
+        navigate(`/result/${voteId}`);
       }
     } catch (error) {
       console.error('Error fetching vote content:', error);
@@ -43,7 +44,7 @@ function MainPage() {
   useEffect(() => {
     const fetchVote = async () => {
       try {
-        const response = await fetch('http://43.201.24.231:8091/vote', {
+        const response = await fetch(`${HOST}/vote`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -78,7 +79,7 @@ function MainPage() {
       <main className="p-8 text-left">
         <h2 className="text-red-500 text-2xl font-bold mb-4">HOT</h2>
         {voteInfo ? (
-          <div className="bg-white p-4 rounded-lg shadow-md mb-8" onClick={handleVoteClick}>
+          <div className="bg-white p-4 rounded-lg shadow-md mb-8 cursor-pointer" onClick={handleVoteClick}>
             <h3 className="font-bold mt-2 ml-2 mb-10">Popular Vote</h3>
             <p className="font-bold ml-4 mb-4">{voteInfo.voteIntro}</p>
             <div className="flex justify-between items-center mb-2">

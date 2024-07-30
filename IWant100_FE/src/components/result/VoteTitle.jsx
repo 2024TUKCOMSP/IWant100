@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 function VoteTitle() {
-  const [voteId, setVoteId] = useState('d364bc91-49b9-4ada-b6c0-5a1632f58bae');
+  const HOST = import.meta.env.VITE_TEST_HOST;
+
+  const { voteId } = useParams();
   const [voteInfo, setVoteInfo] = useState({ voteIntro: "", endAt: "" });
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchVoteData = async () => {
       try {
-        const response = await axios.get(`http://43.201.24.231:8091/vote-content/vote/${voteId}`);
+        const response = await axios.get(`${HOST}/vote-content/vote/${voteId}`);
         if (response.data.success) {
           const voteInfo = response.data.voteInfo;
           const endAt = new Date(voteInfo.endAt);

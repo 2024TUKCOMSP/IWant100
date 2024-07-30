@@ -11,12 +11,14 @@ function getRandomColor() {
 }
 
 function ResultItem() {
+  const HOST = import.meta.env.VITE_TEST_HOST;
+
   const [resultData, setResultData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const voteId = 'd364bc91-49b9-4ada-b6c0-5a1632f58bae';
 
   useEffect(() => {
-    axios.get(`http://43.201.24.231:8091/vote-content/vote/${voteId}`)
+    axios.get(`${HOST}/vote-content/vote/${voteId}`)
       .then(response => {
         if (response.data.success) {
           const voteInfo = response.data.voteInfo;
