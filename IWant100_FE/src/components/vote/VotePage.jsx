@@ -28,10 +28,6 @@ function VotePage() {
 
   const navigate = useNavigate();
 
-  const handleBoxClick = () => {
-    navigate(`/result/${voteId}`);
-  };
-
   useEffect(() => {
     getVoteData(); // 컴포넌트가 마운트될 때 데이터 가져오기
   }, []); // 빈 배열을 의존성으로 사용하여 한 번만 실행
@@ -47,6 +43,27 @@ function VotePage() {
       setIsActive([itemId]);
     }
   };
+
+  const handleVoteSubmit = async () => {
+    console.log({
+      "userId" : userId,
+      "voteId" : voteId,
+      "voteItemList" : isActive
+    })
+
+    const res = await axios.post(`${HOST}/vote-content`, {
+      "userId" : userId,
+      "voteId" : voteId,
+      "voteItemList" : isActive
+    })
+
+    if(res.data.success) {
+      navigate(`/result/${voteId}`);
+    } else {
+      alert('투표를 실패했습니다.');
+      console.log(res.data)
+    }
+  }
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러 발생!!</div>;
@@ -86,7 +103,7 @@ function VotePage() {
             />
           </div>
           <div
-            onClick={handleBoxClick}
+            onClick={handleVoteSubmit}
             className="w-full mb-5 font-esamanru text-white text-[18px] h-[56px] bg-primary-700 shadow-default rounded-lg flex justify-center items-center hover:brightness-75 cursor-pointer"
           >
             투표 하기
