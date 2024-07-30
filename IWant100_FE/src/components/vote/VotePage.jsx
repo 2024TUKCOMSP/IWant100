@@ -29,7 +29,7 @@ function VotePage() {
   const navigate = useNavigate();
 
   const handleBoxClick = () => {
-    navigate(`/result`);
+    navigate(`/result/${voteId}`);
   };
 
   useEffect(() => {
