@@ -14,7 +14,7 @@ const CustomCalendar = ({onChange, value}) => {
   const handleDateChange = (selectedDate) => {
     onChange(selectedDate);
     setIsOpen(false);
-    setNowDate(moment(selectedDate).format("YYYY년 MM월 DD일"));
+    setNowDate(moment(selectedDate).format("YYYY. MM. DD."));
   }
 
   return (
