@@ -18,4 +18,5 @@ public class VoteItem {
     UUID voteId;
     String voteItemContent;
     Integer voteItemCount;
+    Integer voteItemIndex;
 }

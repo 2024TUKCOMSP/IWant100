@@ -16,6 +16,6 @@ public class GetVoteTop1DAOBean {
 
     // 제일 많은 투표 수를 가진 투표 객체 찾기
     public Vote exec() {
-        return voteRepositoryJPA.findTop1ByOrderByVoteCountDesc();
+        return voteRepositoryJPA.findTop1ByOrderByVoteCountDescCreateAtAsc();
     }
 }
