@@ -61,7 +61,6 @@ function VotePage() {
       navigate(`/result/${voteId}`);
     } else {
       alert('투표를 실패했습니다.');
-      console.log(res.data)
     }
   }
 
