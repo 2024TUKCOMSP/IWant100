@@ -38,7 +38,6 @@ function MyList() {
 
   const handleDelete = async (voteId) => {
     try {
-      console.log(voteId, userId)
       const response = await axios.delete(`${HOST}/vote`, {
         data: {
           voteId: voteId,
