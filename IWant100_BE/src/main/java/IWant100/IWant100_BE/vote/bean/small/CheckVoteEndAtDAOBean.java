@@ -10,18 +10,23 @@ import java.util.List;
 
 @Component
 public class CheckVoteEndAtDAOBean {
+    GetVotesDAOBean getVotesDAOBean;
     SaveVotesDAOBean saveVotesDAOBean;
     SaveVoteDAOBean saveVoteDAOBean;
 
     @Autowired
-    public CheckVoteEndAtDAOBean(SaveVotesDAOBean saveVotesDAOBean, SaveVoteDAOBean saveVoteDAOBean) {
+    public CheckVoteEndAtDAOBean(GetVotesDAOBean getVotesDAOBean, SaveVotesDAOBean saveVotesDAOBean, SaveVoteDAOBean saveVoteDAOBean) {
+        this.getVotesDAOBean = getVotesDAOBean;
         this.saveVotesDAOBean = saveVotesDAOBean;
         this.saveVoteDAOBean = saveVoteDAOBean;
     }
 
     // 현재 시간이랑 비교해 끝난 투표인지 확인
-    public void exec(List<Vote> voteList) {
+    public void exec() {
+        List<Vote> voteList = getVotesDAOBean.exec(false);
+
         List<Vote> isDeletedList = new ArrayList<>();
+
         for(Vote vote : voteList) {
             LocalDateTime endAt = vote.getEndAt();
             LocalDateTime now = LocalDateTime.now();
