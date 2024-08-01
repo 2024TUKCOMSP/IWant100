@@ -3,7 +3,8 @@ name: Deploy static content to Pages
 on:
   # 기본 main 브랜치에 대한 푸시 이벤트 발생 시 실행
   push:
-    branches: ['main']
+    branches: 
+      - main
 
   # Actions 탭에서 수동으로 워크플로우를 실행할 수 있도록 구성
   workflow_dispatch:
@@ -57,13 +58,11 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./IWant100_FE/dist
-          name: github-pages
+          # dist 디렉터리 업로드
+          path: './IWant100_FE/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages
