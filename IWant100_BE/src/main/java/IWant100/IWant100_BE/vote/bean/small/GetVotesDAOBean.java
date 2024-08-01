@@ -26,4 +26,9 @@ public class GetVotesDAOBean {
     public List<Vote> exec(UUID userId) {
         return voteRepositoryJPA.findAllByUserIdOrderByEndAtAscCreateAtAsc(userId);
     }
+
+    // 기간이 안지난 전체 투표 찾기
+    public List<Vote> exec(Boolean isDeleted) {
+        return voteRepositoryJPA.findAllByIsDeleted(isDeleted);
+    }
 }

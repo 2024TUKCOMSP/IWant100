@@ -5,17 +5,18 @@ import IWant100.IWant100_BE.vote.repository.VoteRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class GetVoteTop1DAOBean {
+public class SaveVotesDAOBean {
     VoteRepositoryJPA voteRepositoryJPA;
 
     @Autowired
-    public GetVoteTop1DAOBean(VoteRepositoryJPA voteRepositoryJPA) {
+    public SaveVotesDAOBean(VoteRepositoryJPA voteRepositoryJPA) {
         this.voteRepositoryJPA = voteRepositoryJPA;
     }
 
-    // 제일 많은 투표 수를 가진 투표 객체 찾기
-    public Vote exec() {
-        return voteRepositoryJPA.findTop1ByIsDeletedOrderByVoteCountDescCreateAtAsc(false);
+    public void exec(List<Vote> voteList) {
+        voteRepositoryJPA.saveAll(voteList);
     }
 }
