@@ -9,17 +9,11 @@ import ResultPage from './components/result/ResultPage';
 import VotePage from './components/vote/VotePage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
-  const [userId, setUserId] = useState(localStorage.getItem('userId'));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userId', userId);
-    } else {
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('userId');
-    }
+    console.log('isLoggedIn:', isLoggedIn, 'userId:', userId);
   }, [isLoggedIn, userId]);
 
   return (
