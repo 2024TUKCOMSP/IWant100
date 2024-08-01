@@ -22,9 +22,7 @@ function LoginPage({ setIsLoggedIn, setUserId }) {
   }, [searchParams, navigate, setIsLoggedIn, setUserId]);
 
   const handleLoginClick = () => {
-    const clientId = import.meta.env.VITE_TEST_GOOGLE_CLIENT_ID;
-    const redirectUri = import.meta.env.VITE_TEST_REDIRECT_URI;
-    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&access_type=offline&scope=openid%20email%20profile&response_type=code`;
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=492061333618-etnj7fs9n4p0kt6qtk1c0c4b45a5qpj9.apps.googleusercontent.com&redirect_uri=http://ec2-43-201-24-231.ap-northeast-2.compute.amazonaws.com:8091/login/oauth2/code/google&access_type=offline&scope=openid%20email%20profile&response_type=code`;
 
     // Google 로그인 페이지로 리디렉션
     window.location.href = googleAuthUrl;
