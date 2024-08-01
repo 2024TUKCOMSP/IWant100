@@ -17,7 +17,7 @@ function App() {
   }, [isLoggedIn, userId]);
 
   return (
-    <BrowserRouter basename="/IWant100">
+    <BrowserRouter>
       <div className="w-full min-h-screen grid grid-cols-1">
         <div className="bg-white"></div>
         <div className="min-h-screen h-full flex justify-center items-center">
