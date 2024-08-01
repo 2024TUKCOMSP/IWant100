@@ -75,7 +75,7 @@ function CreateVotePage() {
     });
   
     if (res.data.success) {
-      navigate(`/result/${voteId}/${userId}`);
+      navigate(`/list/${userId}`);
     } else {
       alert('투표 생성을 하지 못했어요.');
     }
