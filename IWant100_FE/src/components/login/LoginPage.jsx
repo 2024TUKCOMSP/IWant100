@@ -9,7 +9,6 @@ function LoginPage({ setIsLoggedIn, setUserId }) {
   useEffect(() => {
     // URL에서 userId를 가져옴
     const userId = searchParams.get('userId');
-    
     if (userId) {
       console.log('User ID from URL:', userId);
 
