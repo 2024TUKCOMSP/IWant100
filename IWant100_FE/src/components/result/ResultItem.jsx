@@ -25,6 +25,7 @@ function ResultItem() {
           const voteInfo = response.data.voteInfo;
           const coloredData = voteInfo.voteItemList.map(item => ({
             voteItemId: item.voteItemId,
+            voteItemContent: item.voteItemContent,
             voteItemCount: item.voteItemCount,
             color: getRandomColor()
           }));
