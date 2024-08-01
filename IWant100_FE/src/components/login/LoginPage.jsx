@@ -12,7 +12,7 @@ function LoginPage({ setIsLoggedIn, setUserId }) {
       console.log('User ID from URL:', userId);
       setUserId(userId);
       setIsLoggedIn(true);
-      navigate(`/home?userId=${userId}`);
+      navigate(`/${userId}`);
     } else {
       console.log('No user ID found in URL');
     }
