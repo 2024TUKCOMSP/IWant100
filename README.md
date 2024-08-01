@@ -43,21 +43,22 @@ React와 Spring Boot를 통해 투표 앱을 개발하면서 React와 Spring Boo
 <img width="639" alt="스크린샷 2024-07-23 오후 7 41 22" src="https://github.com/user-attachments/assets/e7c50f07-70fa-41b4-aa42-0a3ec4ccea19">
 
 ## 📱퍼블리싱📱
-Login Page |Home Page|
+Login Page|Home Page|
 -------------|---------|
-<img width="300" alt="스크린샷 2024-07-23 오후 7 13 25" src="https://github.com/user-attachments/assets/27c861e1-c4e4-4a1b-b006-7a3ede223db2">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 21" src="https://github.com/user-attachments/assets/fc405373-f810-4516-8903-638d5eeb9652">|
+<img width="300" alt="스크린샷 2024-07-23 오후 7 13 25" src="https://github.com/user-attachments/assets/9f25b689-79c8-4a3e-a0dd-80bfdcde8587">|<img src="https://github.com/user-attachments/assets/ee16d186-3ac3-4e0f-b72f-d679cf91df82" width="300" />
 
 User Page|Vote Create page|
 --------------------|-----------------|
-<img width="300" alt="스크린샷 2024-07-23 오후 7 12 27" src="https://github.com/user-attachments/assets/40da68bd-dd39-4eb5-a448-50e3891543e4">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 36" src="https://github.com/user-attachments/assets/192c91c8-a867-4553-b94c-e4d0310d9755">
+<img width="300" alt="스크린샷 2024-07-23 오후 7 12 27" src="https://github.com/user-attachments/assets/97af4428-cddc-4d7a-a1c9-e03c02f720b1">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 36" src="https://github.com/user-attachments/assets/8eb5e204-c5b8-4c89-a1a5-99a53082282c">
 
-Vote Page|Vote Result Page|
+Vote Page|Vote Page(plural voting)|
 -------------------|------------------------|
-<img width="300" src="https://github.com/user-attachments/assets/9f881710-a4a3-462e-80af-c88619b8421f">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 47" src="https://github.com/user-attachments/assets/7cf366ec-2ed2-47bc-b1f7-e500615bf5d2">|
+<img width="300" src="https://github.com/user-attachments/assets/431984b3-e18d-4674-87d4-0017af121c77">|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 47" src="https://github.com/user-attachments/assets/50ddb0d5-97fc-4658-85cc-72d455cacb43">
 
-Vote List Page|
--------------------|
-<img width="300" alt="스크린샷 2024-07-23 오후 7 12 43" src="https://github.com/user-attachments/assets/209b178e-889f-46f9-8a81-0a853c3eb961">|
+
+Vote Result Page|Vote List Page|
+-------------------|-------------------|
+<img src="https://github.com/user-attachments/assets/911c696a-9830-4f2d-a764-5e77584c4744" width="300" />|<img width="300" alt="스크린샷 2024-07-23 오후 7 12 43" src="https://github.com/user-attachments/assets/606f5a12-79b0-4ce3-87b9-5f8d1c7dd7d1">|
 
 ## 📅 팀 일정 📅
 <img width="639" alt="스크린샷 2024-07-16 오후 4 20 28" src="https://github.com/user-attachments/assets/40b21e0e-0b0a-4358-963d-7e04cbb0412d">

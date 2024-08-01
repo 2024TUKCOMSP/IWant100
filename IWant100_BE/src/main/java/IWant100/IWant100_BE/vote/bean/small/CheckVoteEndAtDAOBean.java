@@ -28,7 +28,7 @@ public class CheckVoteEndAtDAOBean {
         List<Vote> isDeletedList = new ArrayList<>();
 
         for(Vote vote : voteList) {
-            LocalDateTime endAt = vote.getEndAt();
+            LocalDateTime endAt = vote.getEndAt().plusDays(1);
             LocalDateTime now = LocalDateTime.now();
 
             if(endAt.isBefore(now)) {
