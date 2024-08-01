@@ -58,7 +58,7 @@ function VotePage() {
     })
 
     if(res.data.success) {
-      navigate(`/result/${voteId}`);
+      navigate(`/result/${voteId}/${userId}`);
     } else {
       alert('투표를 실패했습니다.');
     }
