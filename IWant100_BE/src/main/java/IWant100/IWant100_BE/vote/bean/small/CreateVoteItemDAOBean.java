@@ -1,6 +1,5 @@
 package IWant100.IWant100_BE.vote.bean.small;
 
-import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteItemSaveDTO;
 import IWant100.IWant100_BE.vote.domain.DTO.RequestVoteSaveDTO;
 import IWant100.IWant100_BE.vote.domain.Vote;
 import IWant100.IWant100_BE.vote.domain.VoteItem;
@@ -17,11 +16,11 @@ public class CreateVoteItemDAOBean {
         List<VoteItem> voteItemList = new ArrayList<>();
         int itemIndex = 1;
 
-        for(RequestVoteItemSaveDTO voteItemContent : requestVoteSaveDTO.getVoteItemList()) {
+        for(String voteItemContent : requestVoteSaveDTO.getVoteItemList()) {
             VoteItem voteItem = VoteItem.builder()
                     .voteItemId(UUID.randomUUID())
                     .voteId(vote.getVoteId())
-                    .voteItemContent(voteItemContent.getVoteItemContent())
+                    .voteItemContent(voteItemContent)
                     .voteItemCount(0)
                     .voteItemIndex(itemIndex++)
                     .build();
