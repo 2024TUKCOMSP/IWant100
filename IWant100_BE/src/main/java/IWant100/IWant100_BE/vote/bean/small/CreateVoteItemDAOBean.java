@@ -15,6 +15,7 @@ public class CreateVoteItemDAOBean {
     public List<VoteItem> exec(RequestVoteSaveDTO requestVoteSaveDTO, Vote vote) {
 
         List<VoteItem> voteItemList = new ArrayList<>();
+        int itemIndex = 1;
 
         for(RequestVoteItemSaveDTO voteItemContent : requestVoteSaveDTO.getVoteItemList()) {
             VoteItem voteItem = VoteItem.builder()
@@ -22,7 +23,7 @@ public class CreateVoteItemDAOBean {
                     .voteId(vote.getVoteId())
                     .voteItemContent(voteItemContent.getVoteItemContent())
                     .voteItemCount(0)
-                    .voteItemIndex(voteItemContent.getVoteItemIndex())
+                    .voteItemIndex(itemIndex++)
                     .build();
 
             voteItemList.add(voteItem);
