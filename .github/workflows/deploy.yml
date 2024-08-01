@@ -58,12 +58,10 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           # dist 디렉터리 업로드
           path: './IWant100_FE/dist'
-          # 아티팩트 이름에 커밋 SHA 포함
-          name: github-pages-${{ github.sha }}
 
       - name: Deploy to GitHub Pages
         id: deployment
