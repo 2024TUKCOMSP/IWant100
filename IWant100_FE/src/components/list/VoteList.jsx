@@ -43,7 +43,7 @@ function VoteList({ searchTerm }) {
     };
 
     fetchVotes();
-  }, []);
+  }, [HOST]);
 
   const handleBoxClick = async (voteId, endAt) => {
     if (!userId) {
@@ -54,7 +54,6 @@ function VoteList({ searchTerm }) {
     const currentDate = new Date();
     const endDate = new Date(endAt);
 
-    // 날짜 비교를 위해 시간을 제거하여 동일한 날짜인지 확인
     const currentDateNoTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime();
     const endDateNoTime = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()).getTime();
 
@@ -89,7 +88,7 @@ function VoteList({ searchTerm }) {
   };
 
   const filteredVotes = votes.filter((vote) =>
-    (vote.voteItemContent || "").toLowerCase().includes(searchTerm.toLowerCase())
+    vote.voteIntro.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
