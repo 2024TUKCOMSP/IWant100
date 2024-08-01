@@ -1,12 +1,13 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router";
 import backIcon from '../../assets/blue_back.svg';
 
 function UserHeader(props) {
   const navigate = useNavigate();
+  const { userId } = useParams();
 
   const handleBack = () => {
-    navigate('/');
+    navigate(`/${userId}`);
   };
 
   return (

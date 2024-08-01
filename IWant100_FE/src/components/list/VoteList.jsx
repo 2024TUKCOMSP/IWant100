@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
@@ -15,7 +15,7 @@ function VoteList({ searchTerm }) {
 
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
-  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
+  const { userId } = useParams(); 
 
   useEffect(() => {
     const fetchVotes = async () => {
@@ -59,7 +59,7 @@ function VoteList({ searchTerm }) {
 
     if (currentDateNoTime > endDateNoTime) {
       console.log('Navigating to result page due to date condition');
-      navigate(`/result/${voteId}`);
+      navigate(`/result/${voteId}/${userId}`);
       return;
     }
 
@@ -78,9 +78,9 @@ function VoteList({ searchTerm }) {
       const result = await response.json();
       
       if (result.success && result.voteInfo) {
-        navigate(`/vote/${voteId}`);
+        navigate(`/vote/${voteId}/${userId}`);
       } else {
-        navigate(`/result/${voteId}`);
+        navigate(`/result/${voteId}/${userId}`);
       }
     } catch (error) {
       console.error('Error checking vote details:', error);

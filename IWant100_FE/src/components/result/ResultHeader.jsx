@@ -1,16 +1,17 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router";
 import homeIcon from '../../assets/home_icon.svg';
 
 function ListHeader(props) {
   const navigate = useNavigate();
+  const { userId } = useParams();
 
   const handleHome = () => {
-    navigate('/');
+    navigate(`/${userId}`);
   };
 
   const handleBack = () => {
-    navigate('/list');
+    navigate(`/list/${userId}`);
   };
 
   return (

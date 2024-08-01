@@ -1,11 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function Header(props) {
   const navigate = useNavigate();
+  const { userId } = useParams();
 
   const handleBackArrow = () => {
-    navigate('/list');
+    navigate(`/list/${userId}`);
   };
 
   return (

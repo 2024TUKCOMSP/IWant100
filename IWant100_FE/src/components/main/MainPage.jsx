@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import profileIcon from '../../assets/profile_icon.svg';
 import createIcon from '../../assets/create_icon.svg';
 import voteIcon from '../../assets/vote_icon.svg';
@@ -9,16 +9,16 @@ function MainPage() {
   const HOST = import.meta.env.VITE_TEST_HOST;
   const navigate = useNavigate();
   const [voteInfo, setVoteInfo] = useState(null);
-  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
+  const { userId } = useParams();
 
   const handleCreateVote = () => {
-    navigate('/create');
+    navigate(`/create/${userId}`);
   };
   const handleVoteList = () => {
-    navigate('/list');
+    navigate(`/list/${userId}`);
   };
   const handleUser = () => {
-    navigate('/user');
+    navigate(`/user/${userId}`);
   };
 
   const handleVoteClick = async () => {
@@ -32,9 +32,9 @@ function MainPage() {
       });
       const result = await response.json();
       if (result.success && result.voteInfo) {
-        navigate(`/vote/${voteId}`);
+        navigate(`/vote/${voteId}/${userId}`);
       } else {
-        navigate(`/result/${voteId}`);
+        navigate(`/result/${voteId}/${userId}`);
       }
     } catch (error) {
       console.error('Error fetching vote content:', error);
