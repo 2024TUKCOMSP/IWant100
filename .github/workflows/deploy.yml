@@ -57,6 +57,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: './IWant100_FE/dist'
+          name: github-pages
 
       - name: Deploy to GitHub Pages
         id: deployment
