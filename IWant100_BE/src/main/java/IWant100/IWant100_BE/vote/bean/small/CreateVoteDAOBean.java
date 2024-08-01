@@ -19,6 +19,7 @@ public class CreateVoteDAOBean {
                 .createAt(LocalDateTime.now())
                 .endAt(requestVoteSaveDTO.getEndAt())
                 .voteCount(0)
+                .isDeleted(false)
                 .build();
     }
 }
