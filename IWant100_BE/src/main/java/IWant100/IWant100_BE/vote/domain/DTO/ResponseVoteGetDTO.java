@@ -15,4 +15,5 @@ public class ResponseVoteGetDTO {
     Integer voteItemCount;
     String voteItemContent;
     LocalDateTime endAt;
+    Boolean isDeleted;
 }

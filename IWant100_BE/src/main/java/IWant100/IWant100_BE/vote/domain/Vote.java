@@ -23,4 +23,5 @@ public class Vote {
     LocalDateTime createAt;
     LocalDateTime endAt;
     Boolean isDuplication;
+    Boolean isDeleted;
 }

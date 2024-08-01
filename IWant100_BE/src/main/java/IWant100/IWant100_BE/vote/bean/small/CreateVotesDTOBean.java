@@ -37,6 +37,7 @@ public class CreateVotesDTOBean {
                     .endAt(vote.getEndAt())
                     .voteItemCount(voteItem.getVoteItemCount())
                     .voteItemContent(voteItem.getVoteItemContent())
+                    .isDeleted(vote.getIsDeleted())
                     .build();
 
             responseVoteGetDTOList.add(responseVoteGetDTO);

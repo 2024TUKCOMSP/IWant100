@@ -19,11 +19,16 @@ public class GetVotesDAOBean {
 
     // 투표 전체 DAO 찾기
     public List<Vote> exec() {
-        return voteRepositoryJPA.findAllByOrderByEndAtAscCreateAtAsc();
+        return voteRepositoryJPA.findAllByOrderByIsDeletedAscEndAtAscCreateAtAsc();
     }
 
     // userId를 통해 투표 전체 오래된 순으로 찾기
     public List<Vote> exec(UUID userId) {
-        return voteRepositoryJPA.findAllByUserIdOrderByEndAtAscCreateAtAsc(userId);
+        return voteRepositoryJPA.findAllByUserIdOrderByIsDeletedAscEndAtAscCreateAtAsc(userId);
+    }
+
+    // 기간이 안지난 전체 투표 찾기
+    public List<Vote> exec(Boolean isDeleted) {
+        return voteRepositoryJPA.findAllByIsDeleted(isDeleted);
     }
 }
