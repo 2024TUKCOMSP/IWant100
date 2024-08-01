@@ -43,7 +43,7 @@ jobs:
       
       # npm install로 종속성 다시 설치
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ./IWant100_FE
 
       - name: Build
