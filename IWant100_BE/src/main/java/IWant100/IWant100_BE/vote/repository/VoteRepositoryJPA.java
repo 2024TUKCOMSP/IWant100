@@ -16,7 +16,7 @@ public interface VoteRepositoryJPA extends JpaRepository<Vote, UUID> {
     Vote findTop1ByIsDeletedOrderByVoteCountDescCreateAtAsc(Boolean isDeleted);
 
     // userId를 통해 투표 전체 오래된 순으로 찾기
-    List<Vote> findAllByUserIdOrderByEndAtAscCreateAtAsc(UUID userId);
+    List<Vote> findAllByUserIdOrderByIsDeletedAscEndAtAscCreateAtAsc(UUID userId);
 
     // 조회때마다 현재시간이랑 비교해 기간이 지난 투표를 찾기 위한 것
     List<Vote> findAllByIsDeleted(Boolean isDeleted);
