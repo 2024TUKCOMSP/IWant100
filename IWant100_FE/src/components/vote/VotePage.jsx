@@ -10,8 +10,8 @@ function VotePage() {
   const HOST = import.meta.env.VITE_TEST_HOST;
 
   const { voteId } = useParams();
+  const { userId } = useParams();
   const [vote, setVote] = useState(null);
-  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
   const [isActive, setIsActive] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

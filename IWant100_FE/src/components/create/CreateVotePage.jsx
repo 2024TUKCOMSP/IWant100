@@ -3,11 +3,11 @@ import Header from "../Header.jsx";
 import InputBox from "./InputBox.jsx";
 import VoteItem from "./CreateVoteItem.jsx";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function CreateVotePage() {
   const HOST = import.meta.env.VITE_TEST_HOST;
-
+  const { userId } = useParams();
   const [voteTitle, setVoteTitle] = useState('');
   const [selectedDate, setSelectedDate] = useState(); 
   const [isDuplication, setIsDuplication] = useState(false);
@@ -67,7 +67,7 @@ function CreateVotePage() {
     ));
   
     const res = await axios.post(`${HOST}/vote`, {
-      "userId": "b635ee82-a8ea-4854-9e3d-a218532d1d0a",
+      "userId": userId,
       "voteIntro": voteTitle,
       "isDuplication": isDuplication,
       "endAt": utcDate.toISOString(), // ISO 문자열로 변환하여 서버에 전송
@@ -75,7 +75,7 @@ function CreateVotePage() {
     });
   
     if (res.data.success) {
-      navigate('/list');
+      navigate(`/list/${userId}`);
     } else {
       alert('투표 생성을 하지 못했어요.');
     }

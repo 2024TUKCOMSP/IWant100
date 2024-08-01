@@ -9,7 +9,7 @@ import ResultPage from './components/result/ResultPage';
 import VotePage from './components/vote/VotePage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
@@ -23,19 +23,19 @@ function App() {
         <div className="min-h-screen h-full flex justify-center items-center">
           <div className="shadow-2xl min-h-screen h-full w-full min-w-[405px] max-w-[500px]">
             <Routes>
-              {isLoggedIn ? (
+              {isLoggedIn && userId ? (
                 <>
-                  <Route path="/" element={<MainPage />} />
-                  <Route path="/create" element={<CreateVotePage />} />
-                  <Route path="/list" element={<VoteListPage />} />
-                  <Route path="/user" element={<UserPage />} />
-                  <Route path="/result/:voteId" element={<ResultPage />} />
-                  <Route path="/vote/:voteId" element={<VotePage />} />
-                  <Route path="*" element={<Navigate to="/" replace />} /> {/* 모든 다른 경로는 /로 리디렉션 */}
+                  <Route path="/:userId" element={<MainPage />} />
+                  <Route path="/create/:userId" element={<CreateVotePage />} />
+                  <Route path="/list/:userId" element={<VoteListPage />} />
+                  <Route path="/user/:userId" element={<UserPage />} />
+                  <Route path="/result/:voteId/:userId" element={<ResultPage />} />
+                  <Route path="/vote/:voteId/:userId" element={<VotePage />} />
+                  <Route path="*" element={<Navigate to="/:userId" replace />} /> {/* 모든 다른 경로는 /로 리디렉션 */}
                 </>
               ) : (
                 <>
-                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} />} />
                   <Route path="*" element={<Navigate to="/login" replace />} /> {/* 기본 경로를 /login으로 리디렉션 */}
                 </>
               )}

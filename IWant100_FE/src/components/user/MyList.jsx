@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import axios from "axios";
 
 function getRandomColor() {
@@ -15,7 +16,7 @@ function MyList() {
 
   const [voteList, setVoteList] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
+  const { userId } = useParams();
 
   useEffect(() => {
     const fetchVotes = async () => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 function UserProfile() {
   const HOST = import.meta.env.VITE_TEST_HOST;
@@ -7,7 +8,7 @@ function UserProfile() {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userId, setUserId] = useState('b635ee82-a8ea-4854-9e3d-a218532d1d0a');
+  const { userId } = useParams();
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -57,14 +58,14 @@ function UserProfile() {
                   {userInfo?.nickName}
                 </div>
               </div>
-              {/* <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center">
                 <div className="rounded-full bg-[#CCEAFF] flex items-center p-[6px_15.4px] mr-4 box-sizing-border">
                   <span className="break-words font-['Poppins'] font-semibold text-[10px] text-[#444444]">이메일</span>
                 </div>
                 <div className="inline-block break-words font-['Poppins'] font-normal text-[10px] leading-[1.6] text-[#444444]">
                   {userInfo?.email}
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
