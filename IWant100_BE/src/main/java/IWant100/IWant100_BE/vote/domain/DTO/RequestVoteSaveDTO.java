@@ -12,5 +12,5 @@ public class RequestVoteSaveDTO {
     String voteIntro;
     Boolean isDuplication;
     LocalDateTime endAt;
-    List<RequestVoteItemSaveDTO> voteItemList;
+    List<String> voteItemList;
 }
