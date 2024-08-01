@@ -47,7 +47,7 @@ public class LoginController {
             // HTTP 상태 반환
             HttpStatus httpStatus = (userId != null) ? HttpStatus.PERMANENT_REDIRECT : HttpStatus.INTERNAL_SERVER_ERROR;
 
-            String redirectUrl = "https://2024tukcomsp.github.io/login?userId" + userId;
+            String redirectUrl = "https://2024tukcomsp.github.io/login?userId=" + userId;
 
             // 헤더 추가 및 Redirect:
             HttpHeaders headers = new HttpHeaders();
