@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: ./IWant100_FE/package-lock.json
+          cache-dependency-path: IWant100_FE/package-lock.json
 
       # node_modules랑 package-lock.json 삭제
       - name: Remove node_modules and package-lock.json
@@ -43,21 +43,21 @@ jobs:
       
       # npm install로 종속성 다시 설치
       - name: Install dependencies
-        working-directory: ./IWant100_FE
+        working-directory: IWant100_FE
         run: npm ci
 
       - name: Build project
-        working-directory: ./IWant100_FE
+        working-directory: IWant100_FE
         run: npm run build
 
       - name: List build directory
-        run: ls -la ./IWant100_FE/dist
+        run: ls -la IWant100_FE/dist
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
           name: github-pages
-          path: ./IWant100_FE/dist
+          path: IWant100_FE/dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
