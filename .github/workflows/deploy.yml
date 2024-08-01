@@ -50,13 +50,16 @@ jobs:
         run: npm run build
         working-directory: ./IWant100_FE
 
+      - name: List build directory
+        run: ls -la ./IWant100_FE/dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './IWant100_FE/dist'
+          path: ./IWant100_FE/dist
           name: github-pages
 
       - name: Deploy to GitHub Pages
