@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="0; url=/" />
+</head>
+<body>
+  <script>
+    // Redirect to root and preserve path
+    document.location.href = '/' + document.location.pathname.substring(1) + document.location.search;
+  </script>
+</body>
+</html>
