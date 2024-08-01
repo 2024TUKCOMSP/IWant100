@@ -63,3 +63,9 @@ Vote Result Page|Vote List Page|
 ## 📅 팀 일정 📅
 <img width="639" alt="스크린샷 2024-07-16 오후 4 20 28" src="https://github.com/user-attachments/assets/40b21e0e-0b0a-4358-963d-7e04cbb0412d">
 
+## 🖥️ 데모 영상 🖥️
+https://github.com/user-attachments/assets/8963b988-37cd-4f21-a9b8-ea15fafc73fc
+
+
+
+
