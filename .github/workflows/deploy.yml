@@ -57,10 +57,13 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./IWant100_FE/dist
           name: github-pages
+
+      - name: List uploaded artifact
+        run: ls -la ./IWant100_FE/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
