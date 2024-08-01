@@ -9,11 +9,17 @@ import ResultPage from './components/result/ResultPage';
 import VotePage from './components/vote/VotePage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+  const [userId, setUserId] = useState(localStorage.getItem('userId'));
 
   useEffect(() => {
-    console.log('isLoggedIn:', isLoggedIn, 'userId:', userId);
+    if (isLoggedIn) {
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userId', userId);
+    } else {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userId');
+    }
   }, [isLoggedIn, userId]);
 
   return (
@@ -31,7 +37,7 @@ function App() {
                   <Route path="/user/:userId" element={<UserPage />} />
                   <Route path="/result/:voteId/:userId" element={<ResultPage />} />
                   <Route path="/vote/:voteId/:userId" element={<VotePage />} />
-                  <Route path="*" element={<Navigate to="/:userId" replace />} /> {/* 모든 다른 경로는 /로 리디렉션 */}
+                  <Route path="*" element={<Navigate to={`/${userId}`} replace />} /> {/* 모든 다른 경로는 /로 리디렉션 */}
                 </>
               ) : (
                 <>
