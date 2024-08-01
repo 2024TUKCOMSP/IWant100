@@ -2,8 +2,11 @@ import React from "react";
 import Header from "./ResultHeader.jsx";
 import Title from "./VoteTitle.jsx";
 import Item from "./ResultItem.jsx";
+import { useParams } from "react-router";
 
 function ResultPage() {
+  const { userId } = useParams();
+  
   return (
     <div>
       <div className="flex flex-col w-full min-h-screen h-full bg-primary-900">
