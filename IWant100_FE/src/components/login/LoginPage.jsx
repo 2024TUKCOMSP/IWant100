@@ -7,24 +7,20 @@ function LoginPage({ setIsLoggedIn, setUserId }) {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    // URL에서 userId를 가져옴
     const userId = searchParams.get('userId');
     if (userId) {
       console.log('User ID from URL:', userId);
-
-      // userId가 URL에서 전달된 경우, 사용자 상태를 설정하고 홈으로 리디렉션
       setUserId(userId);
       setIsLoggedIn(true);
-      navigate(`/${userId}`);
+      navigate(`/home?userId=${userId}`);
     } else {
       console.log('No user ID found in URL');
     }
   }, [searchParams, navigate, setIsLoggedIn, setUserId]);
 
   const handleLoginClick = () => {
-    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=492061333618-etnj7fs9n4p0kt6qtk1c0c4b45a5qpj9.apps.googleusercontent.com&redirect_uri=http://ec2-43-201-24-231.ap-northeast-2.compute.amazonaws.com:8091/login/oauth2/code/google&access_type=offline&scope=openid%20email%20profile&response_type=code`;
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=492061333618-etnj7fs9n4p0kt6qtk1c0c4b45a5qpj9.apps.googleusercontent.com&redirect_uri=https://2024tukcomsp.github.io/IWant100/login/oauth2/code/google&access_type=offline&scope=openid%20email%20profile&response_type=code`;
 
-    // Google 로그인 페이지로 리디렉션
     window.location.href = googleAuthUrl;
   };
 
