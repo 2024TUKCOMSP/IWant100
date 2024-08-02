@@ -26,7 +26,7 @@ React와 Spring Boot를 통해 투표 앱을 개발하면서 React와 Spring Boo
 |:-:|:-:|:-:|
 |[@min-minnn](https://github.com/min-minnn)|seung yeon<br/>[@moanuna](https://github.com/moanuna)|[@6suhyeon](https://github.com/6suhyeon)|
 ## 💡 기술 스택 💡
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"/>
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"/> ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
 
 - Spring Boot: 투표와 투표 결과를 저장하고 동기화한다.
 - JavaScript, HTML, CSS: 프론트엔드 개발을 위해 사용된다.
@@ -62,4 +62,13 @@ Vote Result Page|Vote List Page|
 
 ## 📅 팀 일정 📅
 <img width="639" alt="스크린샷 2024-07-16 오후 4 20 28" src="https://github.com/user-attachments/assets/40b21e0e-0b0a-4358-963d-7e04cbb0412d">
+
+## 🖥️ 데모 영상 🖥️
+https://github.com/user-attachments/assets/8963b988-37cd-4f21-a9b8-ea15fafc73fc
+
+## 💡 Firebase로 배포 💡
+- https://iwant100-7f092.web.app/login
+
+
+
 
