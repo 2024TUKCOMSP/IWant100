@@ -8,4 +8,7 @@ export default defineConfig({
     port: 3000,
   },
   plugins: [react()],
+  build: {
+    outDir: 'dist' // Ensure this points to the correct directory
+  }
 })
