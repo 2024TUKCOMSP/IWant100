@@ -47,7 +47,7 @@ public class LoginController {
             // HTTP 상태 반환
             HttpStatus httpStatus = (userId != null) ? HttpStatus.PERMANENT_REDIRECT : HttpStatus.INTERNAL_SERVER_ERROR;
 
-            String redirectUrl = "http://192.168.43.6:3000/login?userId=" + userId;
+            String redirectUrl = "https://iwant100-7f092.web.app/login?userId=" + userId;
 
             // 헤더 추가 및 Redirect:
             HttpHeaders headers = new HttpHeaders();
