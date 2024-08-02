@@ -66,6 +66,10 @@ Vote Result Page|Vote List Page|
 ## 🖥️ 데모 영상 🖥️
 https://github.com/user-attachments/assets/8963b988-37cd-4f21-a9b8-ea15fafc73fc
 
+## 💡 임시 배포 💡
+- TUKOREA_Wireless 네트워크 연결
+- http://192.168.43.6:3000에 접속
+
 
 
 
