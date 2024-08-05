@@ -67,7 +67,6 @@ Vote Result Page|Vote List Page|
 https://github.com/user-attachments/assets/8963b988-37cd-4f21-a9b8-ea15fafc73fc
 
 ## 💡 Firebase로 배포 💡
-- https://iwant100-7f092.web.app/login
 
 
 
